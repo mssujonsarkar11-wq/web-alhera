@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>সদস্য নিবন্ধন ফরম - আল-হেরা এসোসিয়েশন</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+html{scroll-behavior:smooth;}
+body{
+background:linear-gradient(135deg,#064e3b,#7f1d1d);
+font-family:'Hind Siliguri',sans-serif;
+color:white;
+}
+
+/* NAV */
+.nav-link{position:relative;padding-bottom:4px;}
+.nav-link.active::after,.nav-link:hover::after{
+content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;background:#10b981;
+}
+#mobileMenu{display:none;}
+#mobileMenu.show{display:block;}
+
+/* FORM BOX */
+.form-box{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(25px);
+border-radius:30px;
+padding:60px;
+box-shadow:0 0 40px rgba(16,185,129,.4);
+}
+
+/* INPUT */
+.input-group{position:relative;}
+.input-field{
+width:100%;
+padding:16px 20px 16px 45px;
+border-radius:50px;
+background:rgba(255,255,255,.12);
+outline:none;
+transition:.3s;
+color:white;
+}
+.input-field:focus{
+background:rgba(255,255,255,.18);
+box-shadow:0 0 20px rgba(16,185,129,.8);
+}
+.input-icon{
+position:absolute;
+left:15px;
+top:50%;
+transform:translateY(-50%);
+color:#10b981;
+}
+
+/* SELECT */
+select.input-field{
+appearance:none;
+}
+select.input-field option{
+background:#064e3b;
+color:white;
+}
+.select-wrapper{position:relative;}
+.select-wrapper::after{
+content:"\f078";
+font-family:"Font Awesome 6 Free";
+font-weight:900;
+position:absolute;
+right:20px;
+top:50%;
+transform:translateY(-50%);
+color:#10b981;
+pointer-events:none;
+}
+
+/* ERROR */
+.error{
+color:#f87171;
+font-size:14px;
+margin-top:6px;
+display:none;
+}
+
+/* BUTTON */
+.submit-btn{
+background:linear-gradient(135deg,#059669,#10b981);
+padding:14px 50px;
+border-radius:50px;
+font-weight:500;
+transition:.3s;
+}
+.submit-btn:hover{
+transform:scale(1.05);
+box-shadow:0 0 25px rgba(16,185,129,.8);
+}
+
+/* FOOTER */
+@keyframes luxuryGradient{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+.footer-bg{
+background:linear-gradient(-45deg,#021f17,#052e26,#3f0f0f,#7f1d1d);
+background-size:400% 400%;
+animation:luxuryGradient 18s ease infinite;
+}
+.footer-glass{
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(20px);
+border-radius:25px;
+box-shadow:0 0 40px rgba(16,185,129,.25);
+}
+.social-icon{
+width:45px;height:45px;
+display:flex;align-items:center;justify-content:center;
+border-radius:50%;
+background:rgba(255,255,255,.08);
+transition:.3s;
+}
+.social-icon:hover{
+transform:scale(1.2);
+box-shadow:0 0 20px rgba(16,185,129,.7);
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="bg-[#064e3b]/95 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+<div>
+<h1 class="text-xl font-semibold text-emerald-400">আল-হেরা এসোসিয়েশন</h1>
+<p class="text-xs text-gray-300">Serving Humanity With Unity & Compassion</p>
+</div>
+<nav class="hidden md:flex space-x-8 text-sm">
+<a href="index.html" class="nav-link">Home</a>
+<a href="members.html" class="nav-link">সদস্যবৃন্দ</a>
+<a href="gallery.html" class="nav-link">গ্যালারি</a>
+<a href="donation.html" class="nav-link">দান</a>
+<a href="form.html" class="nav-link active">সদস্য ফরম</a>
+<a href="contact.html" class="nav-link">যোগাযোগ</a>
+</nav>
+<button id="menuBtn" class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
+</div>
+</header>
+
+<!-- FORM SECTION -->
+<section class="py-24 px-6">
+<h2 class="text-4xl text-center text-emerald-300 mb-12">সদস্য নিবন্ধন ফরম</h2>
+
+<div class="max-w-5xl mx-auto form-box">
+
+<form id="membershipForm" class="grid md:grid-cols-2 gap-8">
+
+<div class="input-group">
+<i class="fa fa-user input-icon"></i>
+<input type="text" placeholder="নাম" class="input-field" required>
+</div>
+
+<div class="input-group">
+<i class="fa fa-user input-icon"></i>
+<input type="text" placeholder="পিতার নাম" class="input-field" required>
+</div>
+
+<div class="input-group md:col-span-2">
+<i class="fa fa-location-dot input-icon"></i>
+<input type="text" placeholder="ঠিকানা" class="input-field" required>
+</div>
+
+<div class="input-group md:col-span-2">
+<i class="fa fa-phone input-icon"></i>
+<input type="tel" id="mobile" placeholder="মোবাইল নম্বর (01XXXXXXXXX)" class="input-field" maxlength="11" required>
+<p id="mobileError" class="error">সঠিক মোবাইল নম্বর দিন (01 দিয়ে শুরু, ১১ সংখ্যা)</p>
+</div>
+
+<div class="input-group md:col-span-2 select-wrapper">
+<i class="fa fa-droplet input-icon"></i>
+<select class="input-field" required>
+<option value="">রক্তের গ্রুপ নির্বাচন করুন</option>
+<option>A+</option><option>A-</option>
+<option>B+</option><option>B-</option>
+<option>O+</option><option>O-</option>
+<option>AB+</option><option>AB-</option>
+</select>
+</div>
+
+<div class="input-group md:col-span-2">
+<i class="fa-brands fa-facebook input-icon"></i>
+<input type="text" placeholder="FB ID (ঐচ্ছিক)" class="input-field">
+</div>
+
+<div class="md:col-span-2 text-center mt-6">
+<button type="submit" class="submit-btn">জমা দিন</button>
+</div>
+
+</form>
+
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer-bg mt-20 py-16 px-6 text-gray-300">
+<div class="max-w-7xl mx-auto footer-glass p-10 text-center">
+© ২০২৬ | Developed by Ms Sujon Sarkar
+</div>
+</footer>
+
+<script>
+const mobileInput=document.getElementById("mobile");
+const mobileError=document.getElementById("mobileError");
+
+mobileInput.addEventListener("input",function(){
+this.value=this.value.replace(/[^0-9]/g,"");
+if(!/^01[0-9]{9}$/.test(this.value)){
+mobileError.style.display="block";
+}else{
+mobileError.style.display="none";
+}
+});
+
+document.getElementById("membershipForm").addEventListener("submit",function(e){
+if(!/^01[0-9]{9}$/.test(mobileInput.value)){
+e.preventDefault();
+mobileError.style.display="block";
+}else{
+e.preventDefault();
+window.location.href="success.html";
+}
+});
+</script>
+
+</body>
+</html>
