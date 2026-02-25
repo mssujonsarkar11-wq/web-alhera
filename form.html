@@ -10,12 +10,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
-html{scroll-behavior:smooth;}
 body{
 background:linear-gradient(135deg,#064e3b,#7f1d1d);
 font-family:'Hind Siliguri',sans-serif;
 color:white;
 margin:0;
+overflow-x:hidden;
 }
 
 /* NAV */
@@ -28,18 +28,19 @@ content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;background:#1
 #mobileMenu{
 position:fixed;
 top:0;
-right:-260px;
-width:240px;
+right:0;
+width:260px;
 height:100%;
 background:#052e26;
-padding:30px 20px;
-transition:.4s ease;
-z-index:100;
+padding:40px 25px;
+transform:translateX(100%);
+transition:transform .4s ease;
+z-index:1000;
 }
-#mobileMenu.show{right:0;}
+#mobileMenu.show{transform:translateX(0);}
 #mobileMenu a{
 display:block;
-padding:12px 0;
+padding:14px 0;
 border-bottom:1px solid rgba(255,255,255,.1);
 }
 
@@ -50,16 +51,13 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,.5);
+background:rgba(0,0,0,.6);
 opacity:0;
 visibility:hidden;
 transition:.3s;
-z-index:90;
+z-index:900;
 }
-#overlay.show{
-opacity:1;
-visibility:visible;
-}
+#overlay.show{opacity:1;visibility:visible;}
 
 /* FORM BOX */
 .form-box{
@@ -73,7 +71,6 @@ box-shadow:0 0 40px rgba(16,185,129,.4);
 .form-box{padding:60px;}
 }
 
-/* INPUT */
 .input-group{position:relative;}
 .input-field{
 width:100%;
@@ -96,28 +93,9 @@ transform:translateY(-50%);
 color:#10b981;
 }
 
-/* SELECT */
-select.input-field{
-appearance:none;
-}
-select.input-field option{
-background:#064e3b;
-color:white;
-}
-.select-wrapper{position:relative;}
-.select-wrapper::after{
-content:"\f078";
-font-family:"Font Awesome 6 Free";
-font-weight:900;
-position:absolute;
-right:20px;
-top:50%;
-transform:translateY(-50%);
-color:#10b981;
-pointer-events:none;
-}
+select.input-field{appearance:none;}
+select.input-field option{background:#064e3b;color:white;}
 
-/* ERROR */
 .error{
 color:#f87171;
 font-size:14px;
@@ -125,7 +103,6 @@ margin-top:6px;
 display:none;
 }
 
-/* BUTTON */
 .submit-btn{
 background:linear-gradient(135deg,#059669,#10b981);
 padding:14px 40px;
@@ -137,33 +114,13 @@ transition:.3s;
 transform:scale(1.05);
 box-shadow:0 0 25px rgba(16,185,129,.8);
 }
-
-/* FOOTER */
-@keyframes luxuryGradient{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
-.footer-bg{
-background:linear-gradient(-45deg,#021f17,#052e26,#3f0f0f,#7f1d1d);
-background-size:400% 400%;
-animation:luxuryGradient 18s ease infinite;
-}
-.footer-glass{
-background:rgba(255,255,255,.05);
-backdrop-filter:blur(20px);
-border-radius:25px;
-box-shadow:0 0 40px rgba(16,185,129,.25);
-}
 </style>
 </head>
 
 <body>
 
-<!-- Overlay -->
 <div id="overlay"></div>
 
-<!-- HEADER -->
 <header class="bg-[#064e3b]/95 sticky top-0 z-50">
 <div class="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-6 py-4">
 <div>
@@ -186,7 +143,6 @@ box-shadow:0 0 40px rgba(16,185,129,.25);
 </div>
 </header>
 
-<!-- Mobile Drawer -->
 <div id="mobileMenu" class="md:hidden">
 <a href="index.html">Home</a>
 <a href="members.html">সদস্যবৃন্দ</a>
@@ -196,9 +152,10 @@ box-shadow:0 0 40px rgba(16,185,129,.25);
 <a href="contact.html">যোগাযোগ</a>
 </div>
 
-<!-- FORM SECTION -->
 <section class="py-16 md:py-24 px-4 md:px-6">
-<h2 class="text-2xl md:text-4xl text-center text-emerald-300 mb-10 md:mb-12">সদস্য নিবন্ধন ফরম</h2>
+<h2 class="text-2xl md:text-4xl text-center text-emerald-300 mb-10 md:mb-12">
+সদস্য নিবন্ধন ফরম
+</h2>
 
 <div class="max-w-5xl mx-auto form-box">
 
@@ -206,28 +163,30 @@ box-shadow:0 0 40px rgba(16,185,129,.25);
 
 <div class="input-group">
 <i class="fa fa-user input-icon"></i>
-<input type="text" placeholder="নাম" class="input-field" required>
+<input type="text" name="Name" placeholder="নাম" class="input-field" required>
 </div>
 
 <div class="input-group">
 <i class="fa fa-user input-icon"></i>
-<input type="text" placeholder="পিতার নাম" class="input-field" required>
+<input type="text" name="FatherName" placeholder="পিতার নাম" class="input-field" required>
 </div>
 
 <div class="input-group md:col-span-2">
 <i class="fa fa-location-dot input-icon"></i>
-<input type="text" placeholder="ঠিকানা" class="input-field" required>
+<input type="text" name="Address" placeholder="ঠিকানা" class="input-field" required>
 </div>
 
 <div class="input-group md:col-span-2">
 <i class="fa fa-phone input-icon"></i>
-<input type="tel" id="mobile" placeholder="মোবাইল নম্বর (01XXXXXXXXX)" class="input-field" maxlength="11" required>
-<p id="mobileError" class="error">সঠিক মোবাইল নম্বর দিন (01 দিয়ে শুরু, ১১ সংখ্যা)</p>
+<input type="tel" name="Mobile" id="mobile"
+placeholder="মোবাইল নম্বর (01XXXXXXXXX)"
+class="input-field" maxlength="11" required>
+<p id="mobileError" class="error">সঠিক মোবাইল নম্বর দিন</p>
 </div>
 
-<div class="input-group md:col-span-2 select-wrapper">
+<div class="input-group md:col-span-2">
 <i class="fa fa-droplet input-icon"></i>
-<select class="input-field" required>
+<select name="BloodGroup" class="input-field" required>
 <option value="">রক্তের গ্রুপ নির্বাচন করুন</option>
 <option>A+</option><option>A-</option>
 <option>B+</option><option>B-</option>
@@ -238,7 +197,8 @@ box-shadow:0 0 40px rgba(16,185,129,.25);
 
 <div class="input-group md:col-span-2">
 <i class="fa-brands fa-facebook input-icon"></i>
-<input type="text" placeholder="FB ID (ঐচ্ছিক)" class="input-field">
+<input type="text" name="FacebookID"
+placeholder="FB ID (ঐচ্ছিক)" class="input-field">
 </div>
 
 <div class="md:col-span-2 text-center mt-4">
@@ -250,27 +210,9 @@ box-shadow:0 0 40px rgba(16,185,129,.25);
 </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="footer-bg mt-16 py-12 px-4 md:px-6 text-gray-300">
-<div class="max-w-7xl mx-auto footer-glass p-6 md:p-10 text-center">
-© ২০২৬ | Developed by Ms Sujon Sarkar
-</div>
-</footer>
-
 <script>
-const menuBtn=document.getElementById("menuBtn");
-const mobileMenu=document.getElementById("mobileMenu");
-const overlay=document.getElementById("overlay");
-
-menuBtn.addEventListener("click",()=>{
-mobileMenu.classList.toggle("show");
-overlay.classList.toggle("show");
-});
-overlay.addEventListener("click",()=>{
-mobileMenu.classList.remove("show");
-overlay.classList.remove("show");
-});
-
+const scriptURL = "https://script.google.com/macros/s/AKfycbycgyVEKHA0p8eKyDYMRoufPD333AMRe7ll_nfZmwq1afrc7S_-nl6Ig9SNti_p5BE3/exec";
+const form = document.getElementById("membershipForm");
 const mobileInput=document.getElementById("mobile");
 const mobileError=document.getElementById("mobileError");
 
@@ -283,14 +225,39 @@ mobileError.style.display="none";
 }
 });
 
-document.getElementById("membershipForm").addEventListener("submit",function(e){
+form.addEventListener("submit",function(e){
+e.preventDefault();
+
 if(!/^01[0-9]{9}$/.test(mobileInput.value)){
-e.preventDefault();
 mobileError.style.display="block";
-}else{
-e.preventDefault();
-window.location.href="success.html";
+return;
 }
+
+fetch(scriptURL,{
+method:"POST",
+body:new FormData(form)
+})
+.then(() => {
+window.location.href="success.html";
+})
+.catch(() => {
+alert("ত্রুটি হয়েছে ❌");
+});
+});
+
+const menuBtn=document.getElementById("menuBtn");
+const mobileMenu=document.getElementById("mobileMenu");
+const overlay=document.getElementById("overlay");
+
+menuBtn.addEventListener("click",()=>{
+mobileMenu.classList.toggle("show");
+overlay.classList.toggle("show");
+document.body.style.overflow="hidden";
+});
+overlay.addEventListener("click",()=>{
+mobileMenu.classList.remove("show");
+overlay.classList.remove("show");
+document.body.style.overflow="auto";
 });
 </script>
 
