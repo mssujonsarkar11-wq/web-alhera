@@ -3,70 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>দান করুন | আল-হেরা এসোসিয়েশন</title>
+<title>দান করুন</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-:root{
---primary:#e2136e;
---bg1:#2a0f1d;
---bg2:#000000;
-}
-
 body{
 font-family:'Hind Siliguri',sans-serif;
-background:radial-gradient(circle at top,var(--primary),var(--bg1) 40%,var(--bg2));
-color:white;
 margin:0;
-transition:.5s;
+min-height:100vh;
+transition:.6s;
 }
 
-.section-title{
-font-size:28px;
-font-weight:600;
-letter-spacing:.5px;
+/* THEMES */
+.theme-bkash{
+--primary:#e2136e;
+background:radial-gradient(circle at center,#6a002b 0%,#1a0008 60%,#000 100%);
+}
+.theme-nagad{
+--primary:#ff7a00;
+background:radial-gradient(circle at center,#7a3d00 0%,#2b1400 60%,#000 100%);
+}
+.theme-rocket{
+--primary:#7b2cbf;
+background:radial-gradient(circle at center,#3a005f 0%,#140021 60%,#000 100%);
 }
 
-.subtitle{
-font-size:14px;
-color:#cbd5e1;
-margin-top:5px;
-}
-
+/* CARD */
 .card{
-background:rgba(255,255,255,.06);
+background:rgba(255,255,255,.05);
 backdrop-filter:blur(25px);
 border-radius:28px;
 border:1px solid var(--primary);
-box-shadow:0 0 60px rgba(0,0,0,.4), 0 0 40px var(--primary);
-padding:50px;
-transition:.4s;
+box-shadow:0 0 60px var(--primary);
+padding:40px;
+color:white;
+animation:fade .6s ease;
 }
-
-.payment-btn{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:10px;
-cursor:pointer;
-padding:14px;
-border-radius:14px;
-transition:.3s;
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.1);
-font-weight:500;
-}
-
-.payment-btn img{
-width:22px;
-}
-
-.payment-btn.active{
-border:1px solid var(--primary);
-box-shadow:0 0 20px var(--primary);
-transform:scale(1.05);
+@keyframes fade{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
 }
 
 .input{
@@ -75,170 +52,152 @@ border:1px solid rgba(255,255,255,.2);
 border-radius:14px;
 padding:14px;
 width:100%;
-margin-bottom:18px;
 color:white;
-font-size:14px;
+margin-bottom:18px;
 }
 
-.label{
-font-size:13px;
-color:#cbd5e1;
-margin-bottom:6px;
-display:block;
-}
-
-.summary-box{
-background:rgba(0,0,0,.3);
-border-radius:16px;
+.method-btn{
 padding:16px;
-margin-top:15px;
-font-size:14px;
-line-height:1.8;
+border-radius:18px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.1);
+transition:.4s;
+cursor:pointer;
+text-align:center;
+}
+.method-btn:hover{
+transform:scale(1.05);
+}
+.method-btn.active{
+box-shadow:0 0 35px var(--primary);
 }
 
-.verify-btn{
-background:linear-gradient(135deg,var(--primary),white);
-color:black;
-padding:14px 60px;
-border-radius:50px;
+.main-btn{
+background:var(--primary);
+padding:14px;
+border-radius:14px;
+width:100%;
 font-weight:600;
-letter-spacing:.5px;
-transition:.3s;
 }
 
-.verify-btn:hover{
-transform:scale(1.07);
-box-shadow:0 0 30px var(--primary);
-}
+.hidden{display:none;}
 
 .modal{
 position:fixed;
 inset:0;
-background:rgba(0,0,0,.9);
+background:rgba(0,0,0,.85);
 display:none;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-}
-
-.spinner{
-border:4px solid rgba(255,255,255,.2);
-border-top:4px solid var(--primary);
-border-radius:50%;
-width:55px;
-height:55px;
-animation:spin 1s linear infinite;
-}
-
-@keyframes spin{
-0%{transform:rotate(0deg);}
-100%{transform:rotate(360deg);}
+color:white;
+text-align:center;
 }
 </style>
 </head>
 
-<body>
+<body class="theme-bkash">
 
-<header class="py-10 text-center">
-<img src="logo.png" class="w-20 h-20 mx-auto rounded-full mb-4">
-<h1 class="section-title">দান করুন</h1>
-<p class="subtitle">আপনার দানের মাধ্যমে মানবতার সেবায় অংশগ্রহণ করুন</p>
-</header>
+<!-- SELECT PAGE -->
+<section id="selectPage" class="max-w-2xl mx-auto mt-16 card">
 
-<section class="px-6 pb-24">
-<div class="max-w-3xl mx-auto card">
+<h2 class="text-2xl font-bold text-center mb-4">দান করুন</h2>
 
-<div class="text-center text-sm text-gray-300 leading-relaxed mb-12">
-<p>“তোমরা আল্লাহর সন্তুষ্টির জন্য যা কিছু ব্যয় করবে, তিনি তা পূর্ণরূপে প্রতিদান দিবেন।”</p>
-<p class="mt-3 text-gray-400">আপনার একটি দান অনেকের জীবনে পরিবর্তন আনতে পারে।</p>
-</div>
+<p class="text-center text-gray-300 mb-8">
+“তোমরা আল্লাহর সন্তুষ্টির জন্য যা কিছু ব্যয় করবে, তিনি তা পূর্ণরূপে প্রতিদান দিবেন।”
+</p>
 
-<div class="grid grid-cols-3 gap-5 mb-10">
-<div class="payment-btn active" onclick="selectMethod('bKash',this)">
-<img src="bkash.png"><span>bKash</span>
-</div>
-<div class="payment-btn" onclick="selectMethod('Nagad',this)">
-<img src="nagad.png"><span>Nagad</span>
-</div>
-<div class="payment-btn" onclick="selectMethod('Rocket',this)">
-<img src="rocket.png"><span>Rocket</span>
-</div>
-</div>
-
-<label class="label">আপনার নাম</label>
+<label>আপনার নাম</label>
 <input type="text" id="donorName" class="input">
 
-<label class="label">দান এর পরিমাণ (BDT)</label>
-<input type="number" id="amountInput" class="input" oninput="updateAmount()">
+<label>দান এর পরিমাণ (BDT)</label>
+<input type="number" id="amountInput" class="input">
 
-<label class="label">Transaction ID</label>
-<input type="text" id="trxId" class="input">
+<p class="mt-4 mb-2">মোবাইল ব্যাংকিং নির্বাচন করুন:</p>
 
-<div class="summary-box">
-<p>মাধ্যম: <strong id="methodName">bKash</strong></p>
-<p>প্রাপক নাম্বার: <strong id="numberText">01711111111</strong></p>
-<p>দান এর পরিমাণ: <strong id="amountText">0 BDT</strong></p>
+<div class="grid grid-cols-3 gap-4">
+<div onclick="goToPay('bkash')" class="method-btn">bKash</div>
+<div onclick="goToPay('nagad')" class="method-btn">Nagad</div>
+<div onclick="goToPay('rocket')" class="method-btn">Rocket</div>
 </div>
 
-<div class="text-center mt-10">
-<button class="verify-btn" onclick="verifyDonation()">দান নিশ্চিত করুন</button>
+</section>
+
+<!-- PAYMENT PAGE -->
+<section id="payPage" class="max-w-2xl mx-auto mt-16 card hidden">
+
+<h3 class="text-xl text-center mb-6" id="methodTitle"></h3>
+
+<div class="text-sm space-y-3 mb-6">
+<p>১️⃣ অ্যাপে যান।</p>
+<p>২️⃣ Send Money নির্বাচন করুন।</p>
+<p>৩️⃣ নাম্বার: <b id="numberText"></b></p>
+<p>৪️⃣ পরিমাণ: <b id="amountText"></b></p>
 </div>
 
-</div>
+<label>Transaction ID</label>
+<input type="text" id="trxInput" class="input">
+
+<button class="main-btn" onclick="verifyDonation()">পেমেন্ট নিশ্চিত করুন</button>
+
 </section>
 
 <div id="successModal" class="modal">
-<div class="spinner mb-6"></div>
-<p class="text-gray-300">তথ্য সংরক্ষণ করা হচ্ছে...</p>
+<h2 class="text-2xl mb-4">আলহামদুলিল্লাহ!</h2>
+<p>আল্লাহ আপনার দান কবুল করুন।</p>
 </div>
 
 <script>
-const scriptURL="https://script.google.com/macros/s/AKfycbycgyVEKHA0p8eKyDYMRoufPD333AMRe7ll_nfZmwq1afrc7S_-nl6Ig9SNti_p5BE3/exec";
+const scriptURL="YOUR_GOOGLE_SCRIPT_URL";
 
-let themes={
-bKash:{color:"#e2136e",bg1:"#2a0f1d",bg2:"#000000",number:"01711111111"},
-Nagad:{color:"#ff7a00",bg1:"#2d1a00",bg2:"#000000",number:"01822222222"},
-Rocket:{color:"#7b2cbf",bg1:"#1c0f2a",bg2:"#000000",number:"01933333333"}
+const methods={
+bkash:{name:"bKash",number:"01711111111"},
+nagad:{name:"Nagad",number:"01822222222"},
+rocket:{name:"Rocket",number:"01933333333"}
 };
 
-function selectMethod(name,el){
-let theme=themes[name];
-document.documentElement.style.setProperty('--primary',theme.color);
-document.documentElement.style.setProperty('--bg1',theme.bg1);
-document.documentElement.style.setProperty('--bg2',theme.bg2);
-document.getElementById("methodName").innerText=name;
-document.getElementById("numberText").innerText=theme.number;
-document.querySelectorAll(".payment-btn").forEach(btn=>btn.classList.remove("active"));
-el.classList.add("active");
-}
+let selectedMethod="bkash";
 
-function updateAmount(){
-let amount=document.getElementById("amountInput").value||0;
-document.getElementById("amountText").innerText=amount+" BDT";
-}
+function goToPay(method){
 
-function verifyDonation(){
 let name=document.getElementById("donorName").value;
 let amount=document.getElementById("amountInput").value;
-let trx=document.getElementById("trxId").value;
 
-if(name==""||amount==""||trx==""){
+if(name==""||amount==""){
 alert("সব তথ্য পূরণ করুন");
 return;
 }
 
-document.getElementById("successModal").style.display="flex";
+selectedMethod=method;
+document.body.className="theme-"+method;
+
+document.getElementById("selectPage").classList.add("hidden");
+document.getElementById("payPage").classList.remove("hidden");
+
+document.getElementById("methodTitle").innerText=methods[method].name+" পেমেন্ট";
+document.getElementById("numberText").innerText=methods[method].number;
+document.getElementById("amountText").innerText=amount+" BDT";
+}
+
+function verifyDonation(){
+
+let trx=document.getElementById("trxInput").value;
+if(trx==""){
+alert("Transaction ID দিন");
+return;
+}
 
 let data=new FormData();
 data.append("Type","Donation");
-data.append("Name",name);
-data.append("Method",document.getElementById("methodName").innerText);
-data.append("Amount",amount);
+data.append("Name",document.getElementById("donorName").value);
+data.append("Method",selectedMethod);
+data.append("Amount",document.getElementById("amountInput").value);
 data.append("TransactionID",trx);
 
 fetch(scriptURL,{method:"POST",body:data})
 .then(()=>{
-setTimeout(()=>{window.location.href="index.html";},1500);
+document.getElementById("successModal").style.display="flex";
+setTimeout(()=>{window.location.href="index.html";},2500);
 });
 }
 </script>
