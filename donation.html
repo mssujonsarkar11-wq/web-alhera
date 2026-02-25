@@ -3,195 +3,244 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>দান - আল-হেরা এসোসিয়েশন</title>
+<title>দান করুন | আল-হেরা এসোসিয়েশন</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
-html{scroll-behavior:smooth;}
+:root{
+--primary:#e2136e;
+--bg1:#2a0f1d;
+--bg2:#000000;
+}
+
 body{
-background:linear-gradient(135deg,#064e3b,#7f1d1d);
 font-family:'Hind Siliguri',sans-serif;
+background:radial-gradient(circle at top,var(--primary),var(--bg1) 40%,var(--bg2));
 color:white;
+margin:0;
+transition:.5s;
 }
 
-/* NAV */
-.nav-link{position:relative;padding-bottom:4px;}
-.nav-link.active::after,.nav-link:hover::after{
-content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;background:#10b981;
+.section-title{
+font-size:28px;
+font-weight:600;
+letter-spacing:.5px;
 }
-#mobileMenu{display:none;}
-#mobileMenu.show{display:block;}
 
-/* DONATION BOX */
-.donation-box{
-background:rgba(255,255,255,.08);
-backdrop-filter:blur(20px);
-border-radius:30px;
+.subtitle{
+font-size:14px;
+color:#cbd5e1;
+margin-top:5px;
+}
+
+.card{
+background:rgba(255,255,255,.06);
+backdrop-filter:blur(25px);
+border-radius:28px;
+border:1px solid var(--primary);
+box-shadow:0 0 60px rgba(0,0,0,.4), 0 0 40px var(--primary);
 padding:50px;
-box-shadow:0 0 40px rgba(16,185,129,.4);
+transition:.4s;
 }
 
-.payment-card{
-border-radius:20px;
-padding:25px;
+.payment-btn{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+cursor:pointer;
+padding:14px;
+border-radius:14px;
 transition:.3s;
-box-shadow:0 0 20px rgba(0,0,0,.4);
-}
-.payment-card:hover{
-transform:translateY(-8px);
-box-shadow:0 0 35px rgba(16,185,129,.6);
-}
-
-.cta-btn{
-background:linear-gradient(135deg,#059669,#10b981);
-padding:14px 40px;
-border-radius:50px;
-font-weight:500;
-transition:.3s;
-display:inline-block;
-}
-.cta-btn:hover{
-transform:scale(1.05);
-box-shadow:0 0 25px rgba(16,185,129,.8);
-}
-
-/* FOOTER */
-@keyframes luxuryGradient{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
-.footer-bg{
-background:linear-gradient(-45deg,#021f17,#052e26,#3f0f0f,#7f1d1d);
-background-size:400% 400%;
-animation:luxuryGradient 18s ease infinite;
-}
-.footer-glass{
 background:rgba(255,255,255,.05);
-backdrop-filter:blur(20px);
-border-radius:25px;
-box-shadow:0 0 40px rgba(16,185,129,.25);
+border:1px solid rgba(255,255,255,.1);
+font-weight:500;
 }
-.social-icon{
-width:45px;height:45px;
-display:flex;align-items:center;justify-content:center;
-border-radius:50%;
+
+.payment-btn img{
+width:22px;
+}
+
+.payment-btn.active{
+border:1px solid var(--primary);
+box-shadow:0 0 20px var(--primary);
+transform:scale(1.05);
+}
+
+.input{
 background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.2);
+border-radius:14px;
+padding:14px;
+width:100%;
+margin-bottom:18px;
+color:white;
+font-size:14px;
+}
+
+.label{
+font-size:13px;
+color:#cbd5e1;
+margin-bottom:6px;
+display:block;
+}
+
+.summary-box{
+background:rgba(0,0,0,.3);
+border-radius:16px;
+padding:16px;
+margin-top:15px;
+font-size:14px;
+line-height:1.8;
+}
+
+.verify-btn{
+background:linear-gradient(135deg,var(--primary),white);
+color:black;
+padding:14px 60px;
+border-radius:50px;
+font-weight:600;
+letter-spacing:.5px;
 transition:.3s;
 }
-.social-icon:hover{
-transform:scale(1.2);
-box-shadow:0 0 20px rgba(16,185,129,.7);
+
+.verify-btn:hover{
+transform:scale(1.07);
+box-shadow:0 0 30px var(--primary);
+}
+
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.9);
+display:none;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+}
+
+.spinner{
+border:4px solid rgba(255,255,255,.2);
+border-top:4px solid var(--primary);
+border-radius:50%;
+width:55px;
+height:55px;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<header class="bg-[#064e3b]/95 sticky top-0 z-50">
-<div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-<div>
-<h1 class="text-xl font-semibold text-emerald-400">আল-হেরা এসোসিয়েশন</h1>
-<p class="text-xs text-gray-300">Serving Humanity With Unity & Compassion</p>
-</div>
-
-<nav class="hidden md:flex space-x-8 text-sm">
-<a href="index.html" class="nav-link">Home</a>
-<a href="members.html" class="nav-link">সদস্যবৃন্দ</a>
-<a href="gallery.html" class="nav-link">গ্যালারি</a>
-<a href="donation.html" class="nav-link active">দান</a>
-<a href="form.html" class="nav-link">সদস্য ফরম</a>
-<a href="contact.html" class="nav-link">যোগাযোগ</a>
-</nav>
-
-<button id="menuBtn" class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
-</div>
-
-<div id="mobileMenu" class="bg-[#052e26] px-6 py-4 space-y-3 md:hidden">
-<a href="index.html">Home</a>
-<a href="members.html">সদস্যবৃন্দ</a>
-<a href="gallery.html">গ্যালারি</a>
-<a href="donation.html">দান</a>
-<a href="form.html">সদস্য ফরম</a>
-<a href="contact.html">যোগাযোগ</a>
-</div>
+<header class="py-10 text-center">
+<img src="logo.png" class="w-20 h-20 mx-auto rounded-full mb-4">
+<h1 class="section-title">দান করুন</h1>
+<p class="subtitle">আপনার দানের মাধ্যমে মানবতার সেবায় অংশগ্রহণ করুন</p>
 </header>
 
-<!-- DONATION SECTION -->
-<section class="py-24 px-6 text-center">
-<h2 class="text-4xl text-emerald-300 mb-10">আপনার দান আমাদের শক্তি</h2>
+<section class="px-6 pb-24">
+<div class="max-w-3xl mx-auto card">
 
-<div class="max-w-4xl mx-auto donation-box">
-
-<p class="text-lg text-gray-200 mb-12 leading-relaxed">
-আপনার সামান্য সহযোগিতা একজন মানুষের জীবনে বড় পরিবর্তন আনতে পারে।
-আমাদের মানবিক কার্যক্রম চালিয়ে যেতে আপনার দান অত্যন্ত গুরুত্বপূর্ণ।
-</p>
-
-<div class="grid md:grid-cols-3 gap-8 mb-12">
-
-<!-- Bkash -->
-<div class="payment-card bg-pink-600/80">
-<h3 class="text-xl font-semibold mb-3">বিকাশ</h3>
-<p class="text-lg">017XXXXXXXX</p>
-<p class="text-sm mt-2">পার্সোনাল / মার্চেন্ট</p>
+<div class="text-center text-sm text-gray-300 leading-relaxed mb-12">
+<p>“তোমরা আল্লাহর সন্তুষ্টির জন্য যা কিছু ব্যয় করবে, তিনি তা পূর্ণরূপে প্রতিদান দিবেন।”</p>
+<p class="mt-3 text-gray-400">আপনার একটি দান অনেকের জীবনে পরিবর্তন আনতে পারে।</p>
 </div>
 
-<!-- Nagad -->
-<div class="payment-card bg-orange-500/80">
-<h3 class="text-xl font-semibold mb-3">নগদ</h3>
-<p class="text-lg">017XXXXXXXX</p>
-<p class="text-sm mt-2">পার্সোনাল / মার্চেন্ট</p>
+<div class="grid grid-cols-3 gap-5 mb-10">
+<div class="payment-btn active" onclick="selectMethod('bKash',this)">
+<img src="bkash.png"><span>bKash</span>
+</div>
+<div class="payment-btn" onclick="selectMethod('Nagad',this)">
+<img src="nagad.png"><span>Nagad</span>
+</div>
+<div class="payment-btn" onclick="selectMethod('Rocket',this)">
+<img src="rocket.png"><span>Rocket</span>
+</div>
 </div>
 
-<!-- Rocket -->
-<div class="payment-card bg-purple-600/80">
-<h3 class="text-xl font-semibold mb-3">রকেট</h3>
-<p class="text-lg">017XXXXXXXX</p>
-<p class="text-sm mt-2">পার্সোনাল / মার্চেন্ট</p>
+<label class="label">আপনার নাম</label>
+<input type="text" id="donorName" class="input">
+
+<label class="label">দান এর পরিমাণ (BDT)</label>
+<input type="number" id="amountInput" class="input" oninput="updateAmount()">
+
+<label class="label">Transaction ID</label>
+<input type="text" id="trxId" class="input">
+
+<div class="summary-box">
+<p>মাধ্যম: <strong id="methodName">bKash</strong></p>
+<p>প্রাপক নাম্বার: <strong id="numberText">01711111111</strong></p>
+<p>দান এর পরিমাণ: <strong id="amountText">0 BDT</strong></p>
 </div>
 
+<div class="text-center mt-10">
+<button class="verify-btn" onclick="verifyDonation()">দান নিশ্চিত করুন</button>
 </div>
-
-<a href="contact.html" class="cta-btn">
-যোগাযোগ করুন
-</a>
 
 </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="footer-bg mt-20 py-16 px-6 text-gray-300">
-<div class="max-w-7xl mx-auto footer-glass p-10 grid md:grid-cols-3 gap-10">
-<div>
-<h3 class="text-emerald-400 text-lg mb-4">আল-হেরা এসোসিয়েশন</h3>
-<p class="text-sm">মানবতার জন্য কাজ করে যাচ্ছে।</p>
+<div id="successModal" class="modal">
+<div class="spinner mb-6"></div>
+<p class="text-gray-300">তথ্য সংরক্ষণ করা হচ্ছে...</p>
 </div>
-<div>
-<h3 class="text-emerald-400 text-lg mb-4">যোগাযোগ</h3>
-<p>কালীগঞ্জ, বাংলাদেশ</p>
-<p>017XXXXXXXX</p>
-</div>
-<div>
-<h3 class="text-emerald-400 text-lg mb-4">সোশ্যাল</h3>
-<div class="flex space-x-4">
-<a href="#" class="social-icon text-blue-500"><i class="fa-brands fa-facebook-f"></i></a>
-<a href="#" class="social-icon text-pink-500"><i class="fa-brands fa-instagram"></i></a>
-<a href="#" class="social-icon text-red-600"><i class="fa-brands fa-youtube"></i></a>
-</div>
-</div>
-</div>
-<div class="text-center mt-8 text-sm">© ২০২৬ | Developed by Ms Sujon Sarkar</div>
-</footer>
 
 <script>
-document.getElementById("menuBtn").addEventListener("click",()=>{
-document.getElementById("mobileMenu").classList.toggle("show");
+const scriptURL="https://script.google.com/macros/s/AKfycbycgyVEKHA0p8eKyDYMRoufPD333AMRe7ll_nfZmwq1afrc7S_-nl6Ig9SNti_p5BE3/exec";
+
+let themes={
+bKash:{color:"#e2136e",bg1:"#2a0f1d",bg2:"#000000",number:"01711111111"},
+Nagad:{color:"#ff7a00",bg1:"#2d1a00",bg2:"#000000",number:"01822222222"},
+Rocket:{color:"#7b2cbf",bg1:"#1c0f2a",bg2:"#000000",number:"01933333333"}
+};
+
+function selectMethod(name,el){
+let theme=themes[name];
+document.documentElement.style.setProperty('--primary',theme.color);
+document.documentElement.style.setProperty('--bg1',theme.bg1);
+document.documentElement.style.setProperty('--bg2',theme.bg2);
+document.getElementById("methodName").innerText=name;
+document.getElementById("numberText").innerText=theme.number;
+document.querySelectorAll(".payment-btn").forEach(btn=>btn.classList.remove("active"));
+el.classList.add("active");
+}
+
+function updateAmount(){
+let amount=document.getElementById("amountInput").value||0;
+document.getElementById("amountText").innerText=amount+" BDT";
+}
+
+function verifyDonation(){
+let name=document.getElementById("donorName").value;
+let amount=document.getElementById("amountInput").value;
+let trx=document.getElementById("trxId").value;
+
+if(name==""||amount==""||trx==""){
+alert("সব তথ্য পূরণ করুন");
+return;
+}
+
+document.getElementById("successModal").style.display="flex";
+
+let data=new FormData();
+data.append("Type","Donation");
+data.append("Name",name);
+data.append("Method",document.getElementById("methodName").innerText);
+data.append("Amount",amount);
+data.append("TransactionID",trx);
+
+fetch(scriptURL,{method:"POST",body:data})
+.then(()=>{
+setTimeout(()=>{window.location.href="index.html";},1500);
 });
+}
 </script>
 
 </body>
