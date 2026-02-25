@@ -152,16 +152,14 @@ box-shadow:0 0 20px rgba(16,185,129,.8);
 <p class="mt-6 text-emerald-400 text-lg">লোড হচ্ছে...</p>
 </div>
 
-<!-- HEADER -->
+<!-- HEADER (UNCHANGED) -->
 <header class="bg-[#064e3b]/95 sticky top-0 z-50">
 <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
 <div class="flex items-center gap-4">
 <img src="logo.png" class="w-12 h-12 rounded-full">
 <div>
-  
 <h1 class="text-xl font-bold text-#800000-500">Al Hera Association</h1>
 <h3 class="text-xs text-yellow-400 text-right w-full">বদলে যাই, বদলে দেই</h3>
-
 </div>
 </div>
 
@@ -202,25 +200,30 @@ box-shadow:0 0 20px rgba(16,185,129,.8);
 </div>
 </section>
 
-<!-- ACTIVITIES -->
+<!-- ACTIVITIES (FIXED GRID) -->
 <section class="py-24 px-6">
 <h2 class="text-3xl text-center text-emerald-300 mb-14">আমাদের কার্যক্রম</h2>
-<div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
+<div class="max-w-6xl mx-auto grid gap-12 
+[grid-template-columns:repeat(auto-fit,minmax(280px,1fr))]">
+
 <div class="glow-card text-center">
 <i class="fa-solid fa-user-doctor text-3xl text-emerald-400 mb-5"></i>
 <h4 class="text-xl font-semibold">ফ্রি মেডিকেল ক্যাম্প</h4>
 <p class="text-gray-300 mt-3">দরিদ্র মানুষের জন্য বিনামূল্যে চিকিৎসা সেবা।</p>
 </div>
+
 <div class="glow-card text-center">
 <i class="fa-solid fa-droplet text-3xl text-emerald-400 mb-5"></i>
 <h4 class="text-xl font-semibold">রক্তদান কর্মসূচি</h4>
 <p class="text-gray-300 mt-3">নিয়মিত রক্তদান কার্যক্রম পরিচালনা।</p>
 </div>
+
 <div class="glow-card text-center">
 <i class="fa-solid fa-hand-holding-heart text-3xl text-emerald-400 mb-5"></i>
 <h4 class="text-xl font-semibold">শীতবস্ত্র বিতরণ</h4>
 <p class="text-gray-300 mt-3">অসহায় মানুষের মাঝে শীতবস্ত্র বিতরণ।</p>
 </div>
+
 </div>
 </section>
 
@@ -235,14 +238,12 @@ box-shadow:0 0 20px rgba(16,185,129,.8);
 </div>
 </section>
 
-<!-- FOOTER -->
+<!-- FOOTER (FULL STRUCTURE RESTORED) -->
 <footer class="footer mt-24">
-
 <div class="h-[2px] bg-gradient-to-r from-transparent via-emerald-500 to-transparent opacity-60"></div>
 
 <div class="py-20">
 <div class="max-w-7xl mx-auto px-6">
-
 <div class="grid md:grid-cols-3 gap-16 text-gray-300 items-start">
 
 <div class="space-y-4 text-center md:text-left">
@@ -282,7 +283,6 @@ box-shadow:0 0 20px rgba(16,185,129,.8);
 
 </div>
 </div>
-
 </footer>
 
 <script>
@@ -293,17 +293,3 @@ document.getElementById("loader").style.display="none";
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
