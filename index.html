@@ -18,33 +18,42 @@ color:white;
 background:linear-gradient(135deg,#064e3b,#7f1d1d);
 }
 
-/* NAV LINK */
-.nav-link{position:relative;padding-bottom:4px;}
-.nav-link.active::after,
-.nav-link:hover::after{
-content:"";
-position:absolute;
-left:0;
-bottom:0;
+/* LOADER */
+.loader{
+position:fixed;
 width:100%;
-height:2px;
-background:#10b981;
+height:100%;
+background:#064e3b;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:9999;
+}
+.loader img{
+width:110px;
+animation:spin 2s linear infinite;
+}
+@keyframes spin{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
 }
 
-/* MOBILE MENU */
-.mobile-menu{
-max-height:0;
-overflow:hidden;
-transition:max-height .5s ease, padding .3s ease;
+/* RIGHT DRAWER */
+.drawer{
+position:fixed;
+top:0;
+right:-280px;
+width:260px;
+height:100%;
 background:#064e3b;
-position:relative;
+padding:30px 20px;
+transition:.4s ease;
 z-index:60;
+box-shadow:-5px 0 20px rgba(0,0,0,.4);
 }
-.mobile-menu.open{
-max-height:500px;
-padding:20px;
-}
-.mobile-menu a{
+.drawer.open{right:0;}
+.drawer a{
 display:block;
 padding:12px 0;
 border-bottom:1px solid rgba(255,255,255,.1);
@@ -58,26 +67,33 @@ left:0;
 width:100%;
 height:100%;
 background:rgba(0,0,0,.5);
-backdrop-filter:blur(6px);
+backdrop-filter:blur(4px);
 opacity:0;
 visibility:hidden;
 transition:.3s;
-z-index:40;
+z-index:50;
 }
 .overlay.show{
 opacity:1;
 visibility:visible;
 }
 
-/* HERO */
-.hero{
-padding:100px 20px;
-text-align:center;
+/* NAV LINK */
+.nav-link{position:relative;padding-bottom:4px;}
+.nav-link.active::after,
+.nav-link:hover::after{
+content:"";
+position:absolute;
+left:0;
+bottom:0;
+width:100%;
+height:2px;
+background:#10b981;
 }
 
 /* BUTTON */
 .btn{
-padding:14px 45px;
+padding:14px 40px;
 border-radius:50px;
 font-weight:500;
 transition:.3s;
@@ -91,27 +107,89 @@ background:linear-gradient(135deg,#7f1d1d,#b91c1c);
 .btn:hover{
 transform:translateY(-6px) scale(1.05);
 }
+
+/* CARD */
+.glow-card{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(20px);
+border-radius:25px;
+padding:30px;
+transition:.3s;
+box-shadow:0 0 25px rgba(16,185,129,.3);
+}
+.glow-card:hover{
+transform:translateY(-10px);
+}
+
+/* GLASS */
+.glass{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(25px);
+border-radius:30px;
+padding:30px;
+}
+
+/* FOOTER */
+.footer{
+background:linear-gradient(-45deg,#021f17,#052e26,#3f0f0f,#7f1d1d);
+background-size:400% 400%;
+animation:gradientMove 18s ease infinite;
+}
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.social-icon{
+width:40px;
+height:40px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+background:rgba(255,255,255,.1);
+transition:.3s;
+}
+.social-icon:hover{
+transform:scale(1.1);
+}
 </style>
 </head>
 
 <body>
 
+<!-- LOADER -->
+<div id="loader" class="loader">
+<img src="logo.png">
+<p class="mt-6 text-emerald-400 text-lg">লোড হচ্ছে...</p>
+</div>
+
 <!-- OVERLAY -->
 <div id="overlay" class="overlay" onclick="closeMenu()"></div>
 
+<!-- DRAWER -->
+<div id="drawer" class="drawer md:hidden">
+<a href="index.html">Home</a>
+<a href="members.html">সদস্যবৃন্দ</a>
+<a href="gallery.html">গ্যালারি</a>
+<a href="donation.html">দান</a>
+<a href="form.html">সদস্য ফরম</a>
+<a href="contact.html">যোগাযোগ</a>
+</div>
+
 <!-- HEADER -->
-<header class="bg-[#064e3b]/95 sticky top-0 z-50">
+<header class="bg-[#064e3b]/95 sticky top-0 z-40">
 <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
 
 <div class="flex items-center gap-4">
 <img src="logo.png" class="w-12 h-12 rounded-full">
 <div>
-<h1 class="text-xl font-bold text-emerald-400">Al Hera Association</h1>
+<h1 class="text-lg md:text-xl font-bold text-emerald-400">Al Hera Association</h1>
 <h3 class="text-xs text-yellow-400 text-right w-full">বদলে যাই, বদলে দেই</h3>
 </div>
 </div>
 
-<!-- Desktop -->
 <nav class="hidden md:flex space-x-8 text-sm">
 <a href="index.html" class="nav-link active">Home</a>
 <a href="members.html" class="nav-link">সদস্যবৃন্দ</a>
@@ -121,62 +199,147 @@ transform:translateY(-6px) scale(1.05);
 <a href="contact.html" class="nav-link">যোগাযোগ</a>
 </nav>
 
-<!-- Mobile Button -->
-<button class="md:hidden text-2xl text-emerald-400 z-50" onclick="toggleMenu()">
+<button class="md:hidden text-2xl text-emerald-400" onclick="toggleMenu()">
 <i id="menuIcon" class="fa-solid fa-bars"></i>
 </button>
 
 </div>
-
-<!-- Mobile Menu -->
-<div id="mobileMenu" class="mobile-menu md:hidden px-6">
-<a href="index.html">Home</a>
-<a href="members.html">সদস্যবৃন্দ</a>
-<a href="gallery.html">গ্যালারি</a>
-<a href="donation.html">দান</a>
-<a href="form.html">সদস্য ফরম</a>
-<a href="contact.html">যোগাযোগ</a>
-</div>
-
 </header>
 
 <!-- HERO -->
-<section class="hero">
-<h1 class="text-4xl md:text-6xl font-bold text-emerald-300 mb-6">
+<section class="py-20 md:py-32 px-6 text-center">
+<h1 class="text-3xl sm:text-4xl md:text-6xl font-bold text-emerald-300 mb-6">
 আল-হেরা এসোসিয়েশন
 </h1>
-<p class="text-lg md:text-xl text-gray-200 mb-10">
+<p class="text-base sm:text-lg md:text-xl text-gray-200 mb-8">
 মানবতার পাশে, সেবার অঙ্গীকার
 </p>
-<div class="flex justify-center gap-6 flex-wrap">
+<div class="flex justify-center gap-4 sm:gap-6 flex-wrap">
 <a href="donation.html" class="btn btn-red">দান করুন</a>
 <a href="form.html" class="btn btn-green">সদস্য হন</a>
 </div>
 </section>
 
+<!-- ABOUT -->
+<section class="py-16 md:py-24 px-6 text-center">
+<h2 class="text-2xl md:text-3xl text-emerald-300 mb-6">পরিচিতি ও লক্ষ্য</h2>
+<div class="w-20 md:w-24 h-1 bg-emerald-400 mx-auto mb-8"></div>
+<div class="max-w-4xl mx-auto glass">
+<p class="text-sm md:text-base leading-relaxed">
+আল-হেরা এসোসিয়েশন একটি মানবকল্যাণমূলক সংগঠন যা সমাজের অসহায় মানুষের পাশে দাঁড়ায়।
+আমরা চিকিৎসা সেবা, রক্তদান কর্মসূচি ও বিভিন্ন সামাজিক কার্যক্রম পরিচালনা করি।
+</p>
+</div>
+</section>
+
+<!-- ACTIVITIES -->
+<section class="py-16 md:py-24 px-6">
+<h2 class="text-2xl md:text-3xl text-center text-emerald-300 mb-12">আমাদের কার্যক্রম</h2>
+
+<div class="max-w-6xl mx-auto grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+<div class="glow-card text-center">
+<i class="fa-solid fa-user-doctor text-3xl text-emerald-400 mb-4"></i>
+<h4 class="text-lg font-semibold">ফ্রি মেডিকেল ক্যাম্প</h4>
+<p class="text-gray-300 mt-3 text-sm">দরিদ্র মানুষের জন্য বিনামূল্যে চিকিৎসা সেবা।</p>
+</div>
+
+<div class="glow-card text-center">
+<i class="fa-solid fa-droplet text-3xl text-emerald-400 mb-4"></i>
+<h4 class="text-lg font-semibold">রক্তদান কর্মসূচি</h4>
+<p class="text-gray-300 mt-3 text-sm">নিয়মিত রক্তদান কার্যক্রম পরিচালনা।</p>
+</div>
+
+<div class="glow-card text-center">
+<i class="fa-solid fa-hand-holding-heart text-3xl text-emerald-400 mb-4"></i>
+<h4 class="text-lg font-semibold">শীতবস্ত্র বিতরণ</h4>
+<p class="text-gray-300 mt-3 text-sm">অসহায় মানুষের মাঝে শীতবস্ত্র বিতরণ।</p>
+</div>
+</div>
+</section>
+
+<!-- STATS -->
+<section class="py-16 md:py-24 px-6 text-center">
+<h2 class="text-2xl md:text-3xl text-emerald-300 mb-12">পরিসংখ্যান</h2>
+
+<div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 glass">
+<div><h4 class="text-2xl md:text-3xl text-emerald-400 font-bold">২৫০+</h4><p>সদস্য</p></div>
+<div><h4 class="text-2xl md:text-3xl text-emerald-400 font-bold">৪৫+</h4><p>প্রকল্প</p></div>
+<div><h4 class="text-2xl md:text-3xl text-emerald-400 font-bold">৫০০০+</h4><p>উপকারভোগী</p></div>
+<div><h4 class="text-2xl md:text-3xl text-emerald-400 font-bold">৩২০+</h4><p>রক্তদান</p></div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer mt-20">
+<div class="py-16">
+<div class="max-w-7xl mx-auto px-6">
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
+
+<div>
+<h3 class="text-emerald-400 text-lg font-semibold mb-4">আল-হেরা এসোসিয়েশন</h3>
+<p class="text-sm text-gray-400">
+মানবতার কল্যাণে কাজ করা একটি স্বেচ্ছাসেবী সংগঠন।
+</p>
+</div>
+
+<div>
+<h3 class="text-emerald-400 text-lg font-semibold mb-4">গুরুত্বপূর্ণ লিংক</h3>
+<div class="flex flex-col space-y-2 text-sm">
+<a href="index.html">Home</a>
+<a href="members.html">সদস্যবৃন্দ</a>
+<a href="donation.html">দান</a>
+<a href="contact.html">যোগাযোগ</a>
+</div>
+</div>
+
+<div class="md:text-right">
+<h3 class="text-emerald-400 text-lg font-semibold mb-4">যোগাযোগ</h3>
+<p class="text-sm text-gray-400">কালীগঞ্জ, বাংলাদেশ</p>
+<p class="text-sm text-gray-400 mb-4">মোবাইল: 017XXXXXXXX</p>
+
+<div class="flex justify-center md:justify-end gap-4">
+<a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+<a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+<a href="#" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+</div>
+</div>
+
+</div>
+
+<div class="mt-12 pt-6 border-t border-white/10 text-center text-gray-500 text-sm">
+© 2026 Al-Hera Association | 
+<span class="text-emerald-400 font-medium">Developed by Ms Sujon Sarkar</span>
+</div>
+
+</div>
+</div>
+</footer>
+
 <script>
-const menu=document.getElementById("mobileMenu");
-const icon=document.getElementById("menuIcon");
+window.addEventListener("load",function(){
+document.getElementById("loader").style.display="none";
+});
+
+const drawer=document.getElementById("drawer");
 const overlay=document.getElementById("overlay");
+const icon=document.getElementById("menuIcon");
 
 function toggleMenu(){
-menu.classList.toggle("open");
+drawer.classList.toggle("open");
 overlay.classList.toggle("show");
 
-if(menu.classList.contains("open")){
-icon.classList.remove("fa-bars");
-icon.classList.add("fa-xmark");
+if(drawer.classList.contains("open")){
+icon.classList.replace("fa-bars","fa-xmark");
 }else{
-icon.classList.remove("fa-xmark");
-icon.classList.add("fa-bars");
+icon.classList.replace("fa-xmark","fa-bars");
 }
 }
 
 function closeMenu(){
-menu.classList.remove("open");
+drawer.classList.remove("open");
 overlay.classList.remove("show");
-icon.classList.remove("fa-xmark");
-icon.classList.add("fa-bars");
+icon.classList.replace("fa-xmark","fa-bars");
 }
 </script>
 
