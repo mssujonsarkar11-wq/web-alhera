@@ -15,6 +15,7 @@ body{
 background:linear-gradient(135deg,#064e3b,#7f1d1d);
 font-family:'Hind Siliguri',sans-serif;
 color:white;
+margin:0;
 }
 
 /* NAV */
@@ -22,8 +23,43 @@ color:white;
 .nav-link.active::after,.nav-link:hover::after{
 content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;background:#10b981;
 }
-#mobileMenu{display:none;}
-#mobileMenu.show{display:block;}
+
+/* RIGHT SLIDE MENU */
+#mobileMenu{
+position:fixed;
+top:0;
+right:-260px;
+width:240px;
+height:100%;
+background:#052e26;
+padding:30px 20px;
+transition:.4s ease;
+z-index:100;
+}
+#mobileMenu.show{right:0;}
+#mobileMenu a{
+display:block;
+padding:12px 0;
+border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+/* Overlay */
+#overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.5);
+opacity:0;
+visibility:hidden;
+transition:.3s;
+z-index:90;
+}
+#overlay.show{
+opacity:1;
+visibility:visible;
+}
 
 /* GALLERY CARD */
 .gallery-card{
@@ -62,7 +98,7 @@ border-radius:25px;
 box-shadow:0 0 40px rgba(16,185,129,.25);
 }
 .social-icon{
-width:45px;height:45px;
+width:40px;height:40px;
 display:flex;align-items:center;justify-content:center;
 border-radius:50%;
 background:rgba(255,255,255,.08);
@@ -77,11 +113,15 @@ box-shadow:0 0 20px rgba(16,185,129,.7);
 
 <body>
 
+<!-- Overlay -->
+<div id="overlay"></div>
+
 <!-- HEADER -->
 <header class="bg-[#064e3b]/95 sticky top-0 z-50">
-<div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+<div class="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-6 py-4">
+
 <div>
-<h1 class="text-xl font-semibold text-emerald-400">আল-হেরা এসোসিয়েশন</h1>
+<h1 class="text-lg md:text-xl font-semibold text-emerald-400">আল-হেরা এসোসিয়েশন</h1>
 <p class="text-xs text-gray-300">Serving Humanity With Unity & Compassion</p>
 </div>
 
@@ -94,10 +134,14 @@ box-shadow:0 0 20px rgba(16,185,129,.7);
 <a href="contact.html" class="nav-link">যোগাযোগ</a>
 </nav>
 
-<button id="menuBtn" class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
+<button id="menuBtn" class="md:hidden text-2xl">
+<i class="fas fa-bars"></i>
+</button>
 </div>
+</header>
 
-<div id="mobileMenu" class="bg-[#052e26] px-6 py-4 space-y-3 md:hidden">
+<!-- Mobile Drawer -->
+<div id="mobileMenu" class="md:hidden">
 <a href="index.html">Home</a>
 <a href="members.html">সদস্যবৃন্দ</a>
 <a href="gallery.html">গ্যালারি</a>
@@ -105,22 +149,21 @@ box-shadow:0 0 20px rgba(16,185,129,.7);
 <a href="form.html">সদস্য ফরম</a>
 <a href="contact.html">যোগাযোগ</a>
 </div>
-</header>
 
 <!-- GALLERY SECTION -->
-<section class="py-20 px-6">
-<h2 class="text-4xl text-center text-emerald-300 mb-14">গ্যালারি</h2>
+<section class="py-16 md:py-20 px-4 md:px-6">
+<h2 class="text-2xl md:text-4xl text-center text-emerald-300 mb-10 md:mb-14">গ্যালারি</h2>
 
-<div class="max-w-7xl mx-auto grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+<div class="max-w-7xl mx-auto grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 
 <!-- ITEM 1 -->
 <a href="gallery-details-1.html" class="gallery-card block">
 <div class="gallery-img">
 <img src="https://images.unsplash.com/photo-1593113630400-ea4288922497?w=600&h=400&fit=crop"
-class="w-full h-56 object-cover">
+class="w-full h-48 md:h-56 object-cover">
 </div>
-<div class="p-5 text-center">
-<h3 class="text-lg font-semibold mb-2">শীতবস্ত্র বিতরণ</h3>
+<div class="p-4 md:p-5 text-center">
+<h3 class="text-base md:text-lg font-semibold mb-2">শীতবস্ত্র বিতরণ</h3>
 <p class="text-sm text-gray-300">তারিখ: জানুয়ারি ২০২৬</p>
 </div>
 </a>
@@ -129,10 +172,10 @@ class="w-full h-56 object-cover">
 <a href="gallery-details-2.html" class="gallery-card block">
 <div class="gallery-img">
 <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&h=400&fit=crop"
-class="w-full h-56 object-cover">
+class="w-full h-48 md:h-56 object-cover">
 </div>
-<div class="p-5 text-center">
-<h3 class="text-lg font-semibold mb-2">রক্তদান কর্মসূচি</h3>
+<div class="p-4 md:p-5 text-center">
+<h3 class="text-base md:text-lg font-semibold mb-2">রক্তদান কর্মসূচি</h3>
 <p class="text-sm text-gray-300">তারিখ: মার্চ ২০২৬</p>
 </div>
 </a>
@@ -141,10 +184,10 @@ class="w-full h-56 object-cover">
 <a href="gallery-details-3.html" class="gallery-card block">
 <div class="gallery-img">
 <img src="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?w=600&h=400&fit=crop"
-class="w-full h-56 object-cover">
+class="w-full h-48 md:h-56 object-cover">
 </div>
-<div class="p-5 text-center">
-<h3 class="text-lg font-semibold mb-2">খাদ্য বিতরণ</h3>
+<div class="p-4 md:p-5 text-center">
+<h3 class="text-base md:text-lg font-semibold mb-2">খাদ্য বিতরণ</h3>
 <p class="text-sm text-gray-300">তারিখ: এপ্রিল ২০২৬</p>
 </div>
 </a>
@@ -153,10 +196,10 @@ class="w-full h-56 object-cover">
 <a href="gallery-details-4.html" class="gallery-card block">
 <div class="gallery-img">
 <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=600&h=400&fit=crop"
-class="w-full h-56 object-cover">
+class="w-full h-48 md:h-56 object-cover">
 </div>
-<div class="p-5 text-center">
-<h3 class="text-lg font-semibold mb-2">বৃক্ষরোপণ কর্মসূচি</h3>
+<div class="p-4 md:p-5 text-center">
+<h3 class="text-base md:text-lg font-semibold mb-2">বৃক্ষরোপণ কর্মসূচি</h3>
 <p class="text-sm text-gray-300">তারিখ: জুন ২০২৬</p>
 </div>
 </a>
@@ -165,32 +208,49 @@ class="w-full h-56 object-cover">
 </section>
 
 <!-- FOOTER -->
-<footer class="footer-bg mt-20 py-16 px-6 text-gray-300">
-<div class="max-w-7xl mx-auto footer-glass p-10 grid md:grid-cols-3 gap-10">
+<footer class="footer-bg mt-16 py-12 px-4 md:px-6 text-gray-300">
+<div class="max-w-7xl mx-auto footer-glass p-6 md:p-10 grid gap-8 grid-cols-1 md:grid-cols-3 text-center md:text-left">
+
 <div>
 <h3 class="text-emerald-400 text-lg mb-4">আল-হেরা এসোসিয়েশন</h3>
 <p class="text-sm">মানবতার জন্য কাজ করে যাচ্ছে।</p>
 </div>
+
 <div>
 <h3 class="text-emerald-400 text-lg mb-4">যোগাযোগ</h3>
-<p>কালীগঞ্জ, বাংলাদেশ</p>
-<p>017XXXXXXXX</p>
+<p class="text-sm">কালীগঞ্জ, বাংলাদেশ</p>
+<p class="text-sm">017XXXXXXXX</p>
 </div>
+
 <div>
 <h3 class="text-emerald-400 text-lg mb-4">সোশ্যাল</h3>
-<div class="flex space-x-4">
-<a href="#" class="social-icon text-blue-500"><i class="fa-brands fa-facebook-f"></i></a>
-<a href="#" class="social-icon text-pink-500"><i class="fa-brands fa-instagram"></i></a>
-<a href="#" class="social-icon text-red-600"><i class="fa-brands fa-youtube"></i></a>
+<div class="flex justify-center md:justify-start space-x-4">
+<a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+<a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+<a href="#" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
 </div>
 </div>
+
 </div>
-<div class="text-center mt-8 text-sm">© ২০২৬ | Developed by Ms Sujon Sarkar</div>
+
+<div class="text-center mt-8 text-xs md:text-sm">
+© ২০২৬ | Developed by Ms Sujon Sarkar
+</div>
 </footer>
 
 <script>
-document.getElementById("menuBtn").addEventListener("click",()=>{
-document.getElementById("mobileMenu").classList.toggle("show");
+const menuBtn=document.getElementById("menuBtn");
+const mobileMenu=document.getElementById("mobileMenu");
+const overlay=document.getElementById("overlay");
+
+menuBtn.addEventListener("click",()=>{
+mobileMenu.classList.toggle("show");
+overlay.classList.toggle("show");
+});
+
+overlay.addEventListener("click",()=>{
+mobileMenu.classList.remove("show");
+overlay.classList.remove("show");
 });
 </script>
 
