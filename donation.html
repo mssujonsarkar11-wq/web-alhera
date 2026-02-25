@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>সদকা ও দান | আল-হেরা এসোসিয়েশন</title>
+<title>দান করুন | আল-হেরা এসোসিয়েশন</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
 :root{
---primary:#e2136e;
---bg1:#2a0f1d;
---bg2:#000000;
+--primary:#64748b;      /* Neutral */
+--bg1:#1e293b;
+--bg2:#0f172a;
 }
 
 body{
@@ -21,97 +21,57 @@ background:radial-gradient(circle at top,var(--primary),var(--bg1) 40%,var(--bg2
 color:white;
 margin:0;
 transition:.6s ease;
-overflow-x:hidden;
-}
-
-/* Subtle moving glow */
-body::before{
-content:"";
-position:fixed;
-top:-200px;
-left:-200px;
-width:600px;
-height:600px;
-background:radial-gradient(circle,var(--primary),transparent 70%);
-filter:blur(120px);
-opacity:.4;
-animation:floatGlow 12s infinite alternate ease-in-out;
-}
-
-@keyframes floatGlow{
-from{transform:translate(0,0);}
-to{transform:translate(200px,150px);}
 }
 
 .card{
 background:rgba(255,255,255,.06);
 backdrop-filter:blur(25px);
-border-radius:30px;
+border-radius:28px;
 border:1px solid var(--primary);
-box-shadow:0 0 70px rgba(0,0,0,.5),0 0 40px var(--primary);
+box-shadow:0 0 60px rgba(0,0,0,.4),0 0 40px var(--primary);
 padding:50px;
 transition:.5s;
 }
 
 .heading{
-font-size:30px;
-font-weight:700;
-letter-spacing:.8px;
-background:linear-gradient(to right,#fff,var(--primary));
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+font-size:28px;
+font-weight:600;
+text-align:center;
+margin-bottom:20px;
 }
 
 .quote{
-font-size:15px;
-color:#e2e8f0;
-line-height:1.8;
+font-size:14px;
+color:#cbd5e1;
+text-align:center;
+margin-bottom:40px;
 }
 
 .input{
 background:rgba(255,255,255,.08);
 border:1px solid rgba(255,255,255,.2);
-border-radius:16px;
+border-radius:14px;
 padding:14px;
 width:100%;
-margin-bottom:20px;
+margin-bottom:18px;
 color:white;
 }
 
 .payment-btn{
-padding:16px;
-border-radius:18px;
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.1);
-cursor:pointer;
-transition:.4s;
 display:flex;
 align-items:center;
 justify-content:center;
 gap:10px;
-}
-
-.payment-btn:hover{
-transform:scale(1.06);
-}
-
-.payment-btn.active{
-box-shadow:0 0 30px var(--primary);
-border:1px solid var(--primary);
-}
-
-.btn{
-background:linear-gradient(135deg,var(--primary),white);
-color:black;
-padding:14px 40px;
-border-radius:40px;
-font-weight:600;
+padding:14px;
+border-radius:14px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.1);
+cursor:pointer;
 transition:.3s;
 }
 
-.btn:hover{
-transform:scale(1.08);
-box-shadow:0 0 35px var(--primary);
+.payment-btn:hover{
+transform:scale(1.05);
 }
 
 .hidden{display:none;}
@@ -125,48 +85,41 @@ justify-content:center;
 align-items:center;
 flex-direction:column;
 text-align:center;
-padding:20px;
-animation:fade .5s ease;
-}
-
-@keyframes fade{
-from{opacity:0;}
-to{opacity:1;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- PAGE 1 -->
-<section id="page1" class="px-6 py-20">
-<div class="max-w-3xl mx-auto card text-center">
+<!-- ===== PAGE 1 (NEUTRAL) ===== -->
+<section id="page1" class="px-6 py-16">
+<div class="max-w-3xl mx-auto card">
 
-<h1 class="heading mb-6">সদকা ও দান</h1>
+<h1 class="heading">সদকা ও দান</h1>
 
-<p class="quote mb-10">
-“যে ব্যক্তি আল্লাহর পথে ব্যয় করে, আল্লাহ তার জন্য বহু গুণ বৃদ্ধি করে দেন।”  
-<br>আপনার একটি দান হতে পারে কারও নতুন সূচনা।
+<p class="quote">
+“তোমরা যা ব্যয় করবে আল্লাহ তা জানেন।”  
+আপনার দান মানবতার কল্যাণে নিবেদিত।
 </p>
 
 <input type="text" id="donorName" class="input" placeholder="আপনার পূর্ণ নাম">
 
 <input type="number" id="amountInput" class="input" placeholder="দান এর পরিমাণ (BDT)">
 
-<p class="mb-4 text-sm text-gray-300">পেমেন্ট মাধ্যম নির্বাচন করুন</p>
+<p class="mb-4 text-sm text-gray-300 text-center">পেমেন্ট মাধ্যম নির্বাচন করুন</p>
 
-<div class="grid grid-cols-3 gap-5 mb-10">
+<div class="grid grid-cols-3 gap-5">
 
 <div class="payment-btn" onclick="goNext('bKash')">
-<img src="bkash.png" width="24"> bKash
+<img src="bkash.png" width="22"> bKash
 </div>
 
 <div class="payment-btn" onclick="goNext('Nagad')">
-<img src="nagad.png" width="24"> Nagad
+<img src="nagad.png" width="22"> Nagad
 </div>
 
 <div class="payment-btn" onclick="goNext('Rocket')">
-<img src="rocket.png" width="24"> Rocket
+<img src="rocket.png" width="22"> Rocket
 </div>
 
 </div>
@@ -174,33 +127,33 @@ to{opacity:1;}
 </div>
 </section>
 
-<!-- PAGE 2 -->
-<section id="page2" class="px-6 py-20 hidden">
-<div class="max-w-3xl mx-auto card text-center">
+<!-- ===== PAGE 2 ===== -->
+<section id="page2" class="px-6 py-16 hidden">
+<div class="max-w-3xl mx-auto card">
 
-<h2 id="methodTitle" class="heading mb-6"></h2>
+<h2 class="heading" id="methodTitle"></h2>
 
-<p class="quote mb-6">
-১️⃣ আপনার মোবাইল অ্যাপে প্রবেশ করুন।  
-<br>২️⃣ “Send Money” অপশন নির্বাচন করুন।  
-<br>৩️⃣ নাম্বার দিন: <b id="numberText"></b>  
-<br>৪️⃣ পরিমাণ দিন: <b id="amountText"></b>  
-<br>৫️⃣ PIN দিয়ে নিশ্চিত করুন।
+<p class="quote">
+১️⃣ আপনার অ্যাপে যান  
+<br>২️⃣ Send Money নির্বাচন করুন  
+<br>৩️⃣ নাম্বার: <b id="numberText"></b>  
+<br>৪️⃣ পরিমাণ: <b id="amountText"></b>
 </p>
 
 <input type="text" id="trxId" class="input" placeholder="Transaction ID লিখুন">
 
-<button class="btn mt-6" onclick="verifyDonation()">দান সম্পন্ন করুন</button>
+<div class="text-center">
+<button onclick="verifyDonation()" class="bg-white text-black px-6 py-3 rounded-full mt-4">
+দান সম্পন্ন করুন
+</button>
+</div>
 
 </div>
 </section>
 
 <div id="successModal" class="modal">
-<h2 class="heading mb-4">আলহামদুলিল্লাহ</h2>
-<p class="quote">
-আপনার দান সফলভাবে গ্রহণ করা হয়েছে।  
-আল্লাহ আপনার আমল কবুল করুন এবং উত্তম প্রতিদান দান করুন।
-</p>
+<h2>আলহামদুলিল্লাহ!</h2>
+<p>আপনার দান সফলভাবে গ্রহণ করা হয়েছে।</p>
 </div>
 
 <script>
@@ -225,13 +178,14 @@ return;
 }
 
 selectedMethod=method;
+
 let theme=themes[method];
 
 document.documentElement.style.setProperty('--primary',theme.color);
 document.documentElement.style.setProperty('--bg1',theme.bg1);
 document.documentElement.style.setProperty('--bg2',theme.bg2);
 
-document.getElementById("methodTitle").innerText=method+" এর মাধ্যমে পেমেন্ট";
+document.getElementById("methodTitle").innerText=method+" পেমেন্ট";
 document.getElementById("numberText").innerText=theme.number;
 document.getElementById("amountText").innerText=amount+" BDT";
 
