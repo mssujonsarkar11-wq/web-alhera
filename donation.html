@@ -3,81 +3,115 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>দান করুন</title>
+<title>সদকা ও দান | আল-হেরা এসোসিয়েশন</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
+:root{
+--primary:#e2136e;
+--bg1:#2a0f1d;
+--bg2:#000000;
+}
+
 body{
 font-family:'Hind Siliguri',sans-serif;
-margin:0;
-min-height:100vh;
-transition:.6s;
-}
-
-/* THEMES */
-.theme-bkash{
---primary:#e2136e;
-background:radial-gradient(circle at center,#6a002b 0%,#1a0008 60%,#000 100%);
-}
-.theme-nagad{
---primary:#ff7a00;
-background:radial-gradient(circle at center,#7a3d00 0%,#2b1400 60%,#000 100%);
-}
-.theme-rocket{
---primary:#7b2cbf;
-background:radial-gradient(circle at center,#3a005f 0%,#140021 60%,#000 100%);
-}
-
-/* CARD */
-.card{
-background:rgba(255,255,255,.05);
-backdrop-filter:blur(25px);
-border-radius:28px;
-border:1px solid var(--primary);
-box-shadow:0 0 60px var(--primary);
-padding:40px;
+background:radial-gradient(circle at top,var(--primary),var(--bg1) 40%,var(--bg2));
 color:white;
-animation:fade .6s ease;
+margin:0;
+transition:.6s ease;
+overflow-x:hidden;
 }
-@keyframes fade{
-from{opacity:0; transform:translateY(20px);}
-to{opacity:1; transform:translateY(0);}
+
+/* Subtle moving glow */
+body::before{
+content:"";
+position:fixed;
+top:-200px;
+left:-200px;
+width:600px;
+height:600px;
+background:radial-gradient(circle,var(--primary),transparent 70%);
+filter:blur(120px);
+opacity:.4;
+animation:floatGlow 12s infinite alternate ease-in-out;
+}
+
+@keyframes floatGlow{
+from{transform:translate(0,0);}
+to{transform:translate(200px,150px);}
+}
+
+.card{
+background:rgba(255,255,255,.06);
+backdrop-filter:blur(25px);
+border-radius:30px;
+border:1px solid var(--primary);
+box-shadow:0 0 70px rgba(0,0,0,.5),0 0 40px var(--primary);
+padding:50px;
+transition:.5s;
+}
+
+.heading{
+font-size:30px;
+font-weight:700;
+letter-spacing:.8px;
+background:linear-gradient(to right,#fff,var(--primary));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.quote{
+font-size:15px;
+color:#e2e8f0;
+line-height:1.8;
 }
 
 .input{
 background:rgba(255,255,255,.08);
 border:1px solid rgba(255,255,255,.2);
-border-radius:14px;
+border-radius:16px;
 padding:14px;
 width:100%;
+margin-bottom:20px;
 color:white;
-margin-bottom:18px;
 }
 
-.method-btn{
+.payment-btn{
 padding:16px;
 border-radius:18px;
 background:rgba(255,255,255,.05);
 border:1px solid rgba(255,255,255,.1);
-transition:.4s;
 cursor:pointer;
-text-align:center;
-}
-.method-btn:hover{
-transform:scale(1.05);
-}
-.method-btn.active{
-box-shadow:0 0 35px var(--primary);
+transition:.4s;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
 }
 
-.main-btn{
-background:var(--primary);
-padding:14px;
-border-radius:14px;
-width:100%;
+.payment-btn:hover{
+transform:scale(1.06);
+}
+
+.payment-btn.active{
+box-shadow:0 0 30px var(--primary);
+border:1px solid var(--primary);
+}
+
+.btn{
+background:linear-gradient(135deg,var(--primary),white);
+color:black;
+padding:14px 40px;
+border-radius:40px;
 font-weight:600;
+transition:.3s;
+}
+
+.btn:hover{
+transform:scale(1.08);
+box-shadow:0 0 35px var(--primary);
 }
 
 .hidden{display:none;}
@@ -85,80 +119,102 @@ font-weight:600;
 .modal{
 position:fixed;
 inset:0;
-background:rgba(0,0,0,.85);
+background:rgba(0,0,0,.9);
 display:none;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-color:white;
 text-align:center;
+padding:20px;
+animation:fade .5s ease;
+}
+
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
 }
 </style>
 </head>
 
-<body class="theme-bkash">
+<body>
 
-<!-- SELECT PAGE -->
-<section id="selectPage" class="max-w-2xl mx-auto mt-16 card">
+<!-- PAGE 1 -->
+<section id="page1" class="px-6 py-20">
+<div class="max-w-3xl mx-auto card text-center">
 
-<h2 class="text-2xl font-bold text-center mb-4">দান করুন</h2>
+<h1 class="heading mb-6">সদকা ও দান</h1>
 
-<p class="text-center text-gray-300 mb-8">
-“তোমরা আল্লাহর সন্তুষ্টির জন্য যা কিছু ব্যয় করবে, তিনি তা পূর্ণরূপে প্রতিদান দিবেন।”
+<p class="quote mb-10">
+“যে ব্যক্তি আল্লাহর পথে ব্যয় করে, আল্লাহ তার জন্য বহু গুণ বৃদ্ধি করে দেন।”  
+<br>আপনার একটি দান হতে পারে কারও নতুন সূচনা।
 </p>
 
-<label>আপনার নাম</label>
-<input type="text" id="donorName" class="input">
+<input type="text" id="donorName" class="input" placeholder="আপনার পূর্ণ নাম">
 
-<label>দান এর পরিমাণ (BDT)</label>
-<input type="number" id="amountInput" class="input">
+<input type="number" id="amountInput" class="input" placeholder="দান এর পরিমাণ (BDT)">
 
-<p class="mt-4 mb-2">মোবাইল ব্যাংকিং নির্বাচন করুন:</p>
+<p class="mb-4 text-sm text-gray-300">পেমেন্ট মাধ্যম নির্বাচন করুন</p>
 
-<div class="grid grid-cols-3 gap-4">
-<div onclick="goToPay('bkash')" class="method-btn">bKash</div>
-<div onclick="goToPay('nagad')" class="method-btn">Nagad</div>
-<div onclick="goToPay('rocket')" class="method-btn">Rocket</div>
+<div class="grid grid-cols-3 gap-5 mb-10">
+
+<div class="payment-btn" onclick="goNext('bKash')">
+<img src="bkash.png" width="24"> bKash
 </div>
 
+<div class="payment-btn" onclick="goNext('Nagad')">
+<img src="nagad.png" width="24"> Nagad
+</div>
+
+<div class="payment-btn" onclick="goNext('Rocket')">
+<img src="rocket.png" width="24"> Rocket
+</div>
+
+</div>
+
+</div>
 </section>
 
-<!-- PAYMENT PAGE -->
-<section id="payPage" class="max-w-2xl mx-auto mt-16 card hidden">
+<!-- PAGE 2 -->
+<section id="page2" class="px-6 py-20 hidden">
+<div class="max-w-3xl mx-auto card text-center">
 
-<h3 class="text-xl text-center mb-6" id="methodTitle"></h3>
+<h2 id="methodTitle" class="heading mb-6"></h2>
 
-<div class="text-sm space-y-3 mb-6">
-<p>১️⃣ অ্যাপে যান।</p>
-<p>২️⃣ Send Money নির্বাচন করুন।</p>
-<p>৩️⃣ নাম্বার: <b id="numberText"></b></p>
-<p>৪️⃣ পরিমাণ: <b id="amountText"></b></p>
+<p class="quote mb-6">
+১️⃣ আপনার মোবাইল অ্যাপে প্রবেশ করুন।  
+<br>২️⃣ “Send Money” অপশন নির্বাচন করুন।  
+<br>৩️⃣ নাম্বার দিন: <b id="numberText"></b>  
+<br>৪️⃣ পরিমাণ দিন: <b id="amountText"></b>  
+<br>৫️⃣ PIN দিয়ে নিশ্চিত করুন।
+</p>
+
+<input type="text" id="trxId" class="input" placeholder="Transaction ID লিখুন">
+
+<button class="btn mt-6" onclick="verifyDonation()">দান সম্পন্ন করুন</button>
+
 </div>
-
-<label>Transaction ID</label>
-<input type="text" id="trxInput" class="input">
-
-<button class="main-btn" onclick="verifyDonation()">পেমেন্ট নিশ্চিত করুন</button>
-
 </section>
 
 <div id="successModal" class="modal">
-<h2 class="text-2xl mb-4">আলহামদুলিল্লাহ!</h2>
-<p>আল্লাহ আপনার দান কবুল করুন।</p>
+<h2 class="heading mb-4">আলহামদুলিল্লাহ</h2>
+<p class="quote">
+আপনার দান সফলভাবে গ্রহণ করা হয়েছে।  
+আল্লাহ আপনার আমল কবুল করুন এবং উত্তম প্রতিদান দান করুন।
+</p>
 </div>
 
 <script>
-const scriptURL="YOUR_GOOGLE_SCRIPT_URL";
+const scriptURL="https://script.google.com/macros/s/AKfycbycgyVEKHA0p8eKyDYMRoufPD333AMRe7ll_nfZmwq1afrc7S_-nl6Ig9SNti_p5BE3/exec";
 
-const methods={
-bkash:{name:"bKash",number:"01711111111"},
-nagad:{name:"Nagad",number:"01822222222"},
-rocket:{name:"Rocket",number:"01933333333"}
+let themes={
+bKash:{color:"#e2136e",bg1:"#2a0f1d",bg2:"#000000",number:"01711111111"},
+Nagad:{color:"#ff7a00",bg1:"#2d1a00",bg2:"#000000",number:"01822222222"},
+Rocket:{color:"#7b2cbf",bg1:"#1c0f2a",bg2:"#000000",number:"01933333333"}
 };
 
-let selectedMethod="bkash";
+let selectedMethod="";
 
-function goToPay(method){
+function goNext(method){
 
 let name=document.getElementById("donorName").value;
 let amount=document.getElementById("amountInput").value;
@@ -169,19 +225,23 @@ return;
 }
 
 selectedMethod=method;
-document.body.className="theme-"+method;
+let theme=themes[method];
 
-document.getElementById("selectPage").classList.add("hidden");
-document.getElementById("payPage").classList.remove("hidden");
+document.documentElement.style.setProperty('--primary',theme.color);
+document.documentElement.style.setProperty('--bg1',theme.bg1);
+document.documentElement.style.setProperty('--bg2',theme.bg2);
 
-document.getElementById("methodTitle").innerText=methods[method].name+" পেমেন্ট";
-document.getElementById("numberText").innerText=methods[method].number;
+document.getElementById("methodTitle").innerText=method+" এর মাধ্যমে পেমেন্ট";
+document.getElementById("numberText").innerText=theme.number;
 document.getElementById("amountText").innerText=amount+" BDT";
+
+document.getElementById("page1").classList.add("hidden");
+document.getElementById("page2").classList.remove("hidden");
 }
 
 function verifyDonation(){
 
-let trx=document.getElementById("trxInput").value;
+let trx=document.getElementById("trxId").value;
 if(trx==""){
 alert("Transaction ID দিন");
 return;
@@ -194,11 +254,13 @@ data.append("Method",selectedMethod);
 data.append("Amount",document.getElementById("amountInput").value);
 data.append("TransactionID",trx);
 
-fetch(scriptURL,{method:"POST",body:data})
-.then(()=>{
+fetch(scriptURL,{method:"POST",body:data,mode:"no-cors"});
+
 document.getElementById("successModal").style.display="flex";
-setTimeout(()=>{window.location.href="index.html";},2500);
-});
+
+setTimeout(()=>{
+window.location.href="index.html";
+},2000);
 }
 </script>
 
