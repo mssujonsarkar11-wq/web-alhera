@@ -37,9 +37,6 @@ box-shadow:0 0 25px rgba(16,185,129,.3);
 box-shadow:0 0 40px rgba(16,185,129,.7);
 transform:translateY(-8px);
 }
-.gallery-img{
-overflow:hidden;
-}
 .gallery-img img{
 transition:transform .6s ease;
 }
@@ -116,30 +113,53 @@ box-shadow:0 0 20px rgba(16,185,129,.7);
 
 <div class="max-w-7xl mx-auto grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
 
-<!-- 12 Demo Gallery Items -->
-<script>
-const galleryImages = [
-"https://images.unsplash.com/photo-1593113630400-ea4288922497",
-"https://images.unsplash.com/photo-1559027615-cd4628902d4a",
-"https://images.unsplash.com/photo-1526256262350-7da7584cf5eb",
-"https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca"
-];
-
-for(let i=1;i<=12;i++){
-document.write(`
-<div class="gallery-card">
+<!-- ITEM 1 -->
+<a href="gallery-details-1.html" class="gallery-card block">
 <div class="gallery-img">
-<img src="${galleryImages[i%4]}?w=600&h=400&fit=crop"
+<img src="https://images.unsplash.com/photo-1593113630400-ea4288922497?w=600&h=400&fit=crop"
 class="w-full h-56 object-cover">
 </div>
 <div class="p-5 text-center">
-<h3 class="text-lg font-semibold mb-2">কার্যক্রম ${i}</h3>
-<p class="text-sm text-gray-300">তারিখ: ২০২৬</p>
+<h3 class="text-lg font-semibold mb-2">শীতবস্ত্র বিতরণ</h3>
+<p class="text-sm text-gray-300">তারিখ: জানুয়ারি ২০২৬</p>
 </div>
+</a>
+
+<!-- ITEM 2 -->
+<a href="gallery-details-2.html" class="gallery-card block">
+<div class="gallery-img">
+<img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&h=400&fit=crop"
+class="w-full h-56 object-cover">
 </div>
-`);
-}
-</script>
+<div class="p-5 text-center">
+<h3 class="text-lg font-semibold mb-2">রক্তদান কর্মসূচি</h3>
+<p class="text-sm text-gray-300">তারিখ: মার্চ ২০২৬</p>
+</div>
+</a>
+
+<!-- ITEM 3 -->
+<a href="gallery-details-3.html" class="gallery-card block">
+<div class="gallery-img">
+<img src="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?w=600&h=400&fit=crop"
+class="w-full h-56 object-cover">
+</div>
+<div class="p-5 text-center">
+<h3 class="text-lg font-semibold mb-2">খাদ্য বিতরণ</h3>
+<p class="text-sm text-gray-300">তারিখ: এপ্রিল ২০২৬</p>
+</div>
+</a>
+
+<!-- ITEM 4 -->
+<a href="gallery-details-4.html" class="gallery-card block">
+<div class="gallery-img">
+<img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=600&h=400&fit=crop"
+class="w-full h-56 object-cover">
+</div>
+<div class="p-5 text-center">
+<h3 class="text-lg font-semibold mb-2">বৃক্ষরোপণ কর্মসূচি</h3>
+<p class="text-sm text-gray-300">তারিখ: জুন ২০২৬</p>
+</div>
+</a>
 
 </div>
 </section>
