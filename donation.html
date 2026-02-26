@@ -10,7 +10,7 @@
 
 <style>
 :root{
---primary:#64748b;      /* Neutral */
+--primary:#64748b;
 --bg1:#1e293b;
 --bg2:#0f172a;
 }
@@ -29,8 +29,14 @@ backdrop-filter:blur(25px);
 border-radius:28px;
 border:1px solid var(--primary);
 box-shadow:0 0 60px rgba(0,0,0,.4),0 0 40px var(--primary);
-padding:50px;
+padding:30px;
 transition:.5s;
+}
+
+@media (min-width:640px){
+.card{
+padding:50px;
+}
 }
 
 .heading{
@@ -62,16 +68,24 @@ display:flex;
 align-items:center;
 justify-content:center;
 gap:10px;
-padding:14px;
-border-radius:14px;
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.1);
+padding:16px;
+border-radius:16px;
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.15);
 cursor:pointer;
 transition:.3s;
+font-weight:500;
+font-size:15px;
+}
+
+.payment-btn img{
+width:26px;
+height:auto;
 }
 
 .payment-btn:hover{
 transform:scale(1.05);
+box-shadow:0 0 20px var(--primary);
 }
 
 .hidden{display:none;}
@@ -91,7 +105,7 @@ text-align:center;
 
 <body>
 
-<!-- ===== PAGE 1 (NEUTRAL) ===== -->
+<!-- PAGE 1 -->
 <section id="page1" class="px-6 py-16">
 <div class="max-w-3xl mx-auto card">
 
@@ -103,23 +117,23 @@ text-align:center;
 </p>
 
 <input type="text" id="donorName" class="input" placeholder="আপনার পূর্ণ নাম">
-
 <input type="number" id="amountInput" class="input" placeholder="দান এর পরিমাণ (BDT)">
 
 <p class="mb-4 text-sm text-gray-300 text-center">পেমেন্ট মাধ্যম নির্বাচন করুন</p>
 
-<div class="grid grid-cols-3 gap-5">
+<!-- Responsive Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
 
 <div class="payment-btn" onclick="goNext('bKash')">
-<img src="https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/bkash.png" width="22"> bKash
+<img src="https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/bkash.png"> bKash
 </div>
 
 <div class="payment-btn" onclick="goNext('Nagad')">
-<img src="https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/nagad.png" width="22"> Nagad
+<img src="https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/nagad.png"> Nagad
 </div>
 
 <div class="payment-btn" onclick="goNext('Rocket')">
-<img src="https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/rocket.png" width="22"> Rocket
+<img src="https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/rocket.png"> Rocket
 </div>
 
 </div>
@@ -127,17 +141,17 @@ text-align:center;
 </div>
 </section>
 
-<!-- ===== PAGE 2 ===== -->
+<!-- PAGE 2 -->
 <section id="page2" class="px-6 py-16 hidden">
 <div class="max-w-3xl mx-auto card">
 
 <h2 class="heading" id="methodTitle"></h2>
 
 <p class="quote">
-1.আপনার অ্যাপে যান  
-<br>2.Send Money নির্বাচন করুন  
-<br>3.নাম্বার: <b id="numberText"></b>  
-<br>4.পরিমাণ: <b id="amountText"></b>
+1. আপনার অ্যাপে যান  
+<br>2. Send Money নির্বাচন করুন  
+<br>3. নাম্বার: <b id="numberText"></b>  
+<br>4. পরিমাণ: <b id="amountText"></b>
 </p>
 
 <input type="text" id="trxId" class="input" placeholder="Transaction ID লিখুন">
@@ -220,4 +234,3 @@ window.location.href="index.html";
 
 </body>
 </html>
-
