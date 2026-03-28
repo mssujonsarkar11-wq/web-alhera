@@ -108,25 +108,48 @@ box-shadow:0 0 45px rgba(16,185,129,.6);
 
 
 <nav class="hidden md:flex space-x-8 text-sm">
+  
 <a href="index.html" class="nav-link">Home</a>
-<a href="members.html" class="nav-link active">সদস্যবৃন্দ</a>
+  
+<!-- DROPDOWN FIX -->
+<div class="relative group inline-block">
+<a href="members.html" class="nav-link active flex items-center gap-1">
+সদস্যবৃন্দ ▾
+</a>
+
+<div class="absolute left-0 top-full w-48 bg-[#065f46] rounded-lg shadow-lg 
+opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-200 z-50">
+
+<a href="#members" class="block px-4 py-2 hover:bg-emerald-500">সদস্য</a>
+<a href="#advisors" class="block px-4 py-2 hover:bg-emerald-500">উপদেষ্টা</a>
+
+</div>
+</div>
+
 <a href="gallery.html" class="nav-link">গ্যালারি</a>
 <a href="donation.html" class="nav-link">দান</a>
 <a href="form.html" class="nav-link">সদস্য ফরম</a>
 <a href="contact.html" class="nav-link">যোগাযোগ</a>
+
 </nav>
 
-<button id="menuBtn" class="md:hidden text-2xl">
+<button id="menuBtn" class="md:hidden text-2xl text-white">
 <i class="fas fa-bars"></i>
 </button>
 
 </div>
 </header>
 
-<!-- Mobile Right Drawer -->
+<!-- MOBILE MENU -->
 <div id="mobileMenu" class="md:hidden">
 <a href="index.html">Home</a>
-<a href="members.html">সদস্যবৃন্দ</a>
+
+<button onclick="toggleSubMenu()">সদস্যবৃন্দ ▾</button>
+<div id="subMenu" class="hidden pl-4">
+<a href="#members">সদস্য</a>
+<a href="#advisors">উপদেষ্টা</a>
+</div>
+
 <a href="gallery.html">গ্যালারি</a>
 <a href="donation.html">দান</a>
 <a href="form.html">সদস্য ফরম</a>
