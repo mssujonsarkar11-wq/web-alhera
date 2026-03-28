@@ -107,12 +107,9 @@ box-shadow:0 0 45px rgba(16,185,129,.6);
 </div>
 </div>
 
-
 <nav class="hidden md:flex space-x-8 text-sm">
-  
 <a href="index.html" class="nav-link">Home</a>
-  
-<!-- DROPDOWN FIX -->
+
 <div class="relative group inline-block">
 <a href="members.html" class="nav-link active flex items-center gap-1">
 সদস্যবৃন্দ ▾
@@ -131,7 +128,6 @@ opacity-0 invisible group-hover:opacity-100 group-hover:visible transition durat
 <a href="donation.html" class="nav-link">দান</a>
 <a href="form.html" class="nav-link">সদস্য ফরম</a>
 <a href="contact.html" class="nav-link">যোগাযোগ</a>
-
 </nav>
 
 <button id="menuBtn" class="md:hidden text-2xl text-white">
@@ -156,6 +152,7 @@ opacity-0 invisible group-hover:opacity-100 group-hover:visible transition durat
 <a href="form.html">সদস্য ফরম</a>
 <a href="contact.html">যোগাযোগ</a>
 </div>
+
 
 <!-- ADVISORS SECTION -->
 <section id="advisors" class="py-16 md:py-20 px-4 md:px-6">
@@ -292,21 +289,36 @@ FB প্রোফাইল
 </footer>
 
 <script>
-const menuBtn=document.getElementById("menuBtn");
-const mobileMenu=document.getElementById("mobileMenu");
-const overlay=document.getElementById("overlay");
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+const overlay = document.getElementById("overlay");
 
-menuBtn.addEventListener("click",()=>{
-mobileMenu.classList.toggle("show");
-overlay.classList.toggle("show");
+// MENU
+menuBtn.addEventListener("click", () => {
+  mobileMenu.classList.toggle("show");
+  overlay.classList.toggle("show");
 });
 
-overlay.addEventListener("click",()=>{
-mobileMenu.classList.remove("show");
-overlay.classList.remove("show");
+// CLOSE MENU
+function closeMenu(){
+  mobileMenu.classList.remove("show");
+  overlay.classList.remove("show");
+}
+
+overlay.addEventListener("click", closeMenu);
+
+// SUBMENU FIX
+function toggleSubMenu(){
+  document.getElementById("subMenu").classList.toggle("hidden");
+}
+
+// AUTO CLOSE + SMOOTH SCROLL
+document.querySelectorAll('#mobileMenu a').forEach(link=>{
+  link.addEventListener('click', ()=>{
+    closeMenu();
+  });
 });
 </script>
-
 </body>
 </html>
 
