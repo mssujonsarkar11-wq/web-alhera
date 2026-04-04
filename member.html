@@ -1,0 +1,430 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>সদস্যবৃন্দ - আল-হেরা এসোসিয়েশন</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+  html{scroll-behavior:smooth;}
+body{
+background:linear-gradient(135deg,#064e3b,#7f1d1d);
+font-family:'Hind Siliguri',sans-serif;
+color:white;
+margin:0;
+}
+
+/* Nav underline */
+.nav-link{
+position:relative;
+padding-bottom:4px;
+}
+.nav-link:hover::after,
+.nav-link.active::after{
+content:"";
+position:absolute;
+left:0;
+bottom:0;
+width:100%;
+height:2px;
+background:#10b981;
+}
+
+/* RIGHT SLIDE MENU */
+#mobileMenu{
+position:fixed;
+top:0;
+right:-260px;
+width:240px;
+height:100%;
+background:#052e26;
+padding:30px 20px;
+transition:.4s ease;
+z-index:100;
+}
+#mobileMenu.show{
+right:0;
+}
+#mobileMenu a{
+display:block;
+padding:12px 0;
+border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+/* Overlay */
+#overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.5);
+opacity:0;
+visibility:hidden;
+transition:.3s;
+z-index:90;
+}
+#overlay.show{
+opacity:1;
+visibility:visible;
+}
+
+/* Member card */
+.member-card{
+background:rgba(255,255,255,.07);
+border-radius:25px;
+padding:25px;
+text-align:center;
+transition:.3s ease;
+backdrop-filter:blur(12px);
+box-shadow:0 0 25px rgba(16,185,129,.25);
+}
+.member-card:hover{
+transform:translateY(-8px);
+box-shadow:0 0 45px rgba(16,185,129,.6);
+}
+</style>
+</head>
+<body>
+
+<!-- Overlay -->
+<div id="overlay"></div>
+
+<!-- HEADER -->
+<header class="bg-[#064e3b]/95 sticky top-0 z-40">
+<div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+
+<div class="flex items-center gap-4">
+<img src="https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/logo.jpg" class="w-12 h-12 rounded-full">
+<div>
+<h1 class="text-lg md:text-xl font-bold text-emerald-400">Al Hera Association</h1>
+<h3 class="text-xs text-yellow-400 text-right w-full">বদলে যাই, বদলে দেই</h3>
+</div>
+</div>
+
+<nav class="hidden md:flex space-x-8 text-sm">
+<a href="index.html" class="nav-link">Home</a>
+
+<div class="relative group inline-block">
+<a href="members.html" class="nav-link active flex items-center gap-1">
+সদস্যবৃন্দ ▾
+</a>
+
+<div class="absolute left-0 top-full w-48 bg-[#065f46] rounded-lg shadow-lg 
+opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-200 z-50">
+
+<a href="https://al-hera-association.vercel.app/member.html" class="block px-4 py-2 hover:bg-emerald-500">সদস্য</a>
+<a href="#https://al-hera-association.vercel.app/advisor.html" class="block px-4 py-2 hover:bg-emerald-500">উপদেষ্টা</a>
+
+</div>
+</div>
+
+<a href="gallery.html" class="nav-link">গ্যালারি</a>
+<a href="donation.html" class="nav-link">দান</a>
+<a href="form.html" class="nav-link">সদস্য ফরম</a>
+<a href="contact.html" class="nav-link">যোগাযোগ</a>
+</nav>
+
+<button id="menuBtn" class="md:hidden text-2xl text-white">
+<i class="fas fa-bars"></i>
+</button>
+
+</div>
+</header>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="md:hidden">
+<a href="index.html">Home</a>
+
+<button onclick="toggleSubMenu()">সদস্যবৃন্দ ▾</button>
+<div id="subMenu" class="hidden pl-4">
+<a href="#members">সদস্য</a>
+<a href="#advisors">উপদেষ্টা</a>
+</div>
+
+<a href="gallery.html">গ্যালারি</a>
+<a href="donation.html">দান</a>
+<a href="form.html">সদস্য ফরম</a>
+<a href="contact.html">যোগাযোগ</a>
+</div>
+
+<!-- MEMBERS SECTION -->
+<section id="members" class="py-16 md:py-20 px-4 md:px-6">
+<h2 class="text-3xl md:text-4xl text-center text-emerald-300 mb-12 md:mb-14">
+আমাদের সদস্যবৃন্দ
+</h2>
+
+<div class="max-w-7xl mx-auto grid gap-8 md:gap-10
+grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+
+<div class="member-card">
+<img src="https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/masud.jpg"
+class="w-28 h-28 mx-auto rounded-full object-cover mb-4 border-4 border-emerald-500">
+<h3 class="text-lg font-bold text-yellow-200">মোঃ মাসুদ রানা </h3>
+  <p class="text-base text-white-300 font-semibold"> সভাপতি </p>
+<p class="text-sm">ফোন: 01887-536627</p>
+<p class="text-sm mb-3 text-red-500 font-semibold">Blood group: B-</p>
+<a href="https://www.facebook.com/mithul2082001" class="inline-block px-5 py-2 bg-emerald-600 rounded-full text-sm hover:scale-105 transition">
+FB প্রোফাইল
+</a>
+</div>
+  
+<div class="member-card">
+<img src="https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/adnanul1.jpg"
+class="w-28 h-28 mx-auto rounded-full object-cover mb-4 border-4 border-emerald-500">
+<h3 class="text-lg font-bold text-yellow-200"> মোঃ আদনানুল হাসান </h3>
+  <p class="text-base text-white-300 font-semibold"> সদস্য </p>
+<p class="text-sm">ফোন: 01708-356911</p>
+<p class="text-sm mb-3 text-red-500 font-semibold">Blood group: AB+</p>
+<a href="https://www.facebook.com/md.adnanul.hasan" class="inline-block px-5 py-2 bg-emerald-600 rounded-full text-sm hover:scale-105 transition">
+FB প্রোফাইল
+</a>
+</div>
+
+<div class="member-card">
+<img src="https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/ruman1.jpg"
+class="w-28 h-28 mx-auto rounded-full object-cover mb-4 border-4 border-emerald-500">
+<h3 class="text-lg font-bold text-yellow-200"> মোঃ রুমান মাহমুদ </h3>
+  <p class="text-base text-white-300 font-semibold"> সদস্য </p>
+<p class="text-sm">ফোন: 01836-077058</p>
+<p class="text-sm mb-3 text-red-500 font-semibold">Blood group: O+</p>
+<a href="https://www.facebook.com/Md.ruman.mahmud462" class="inline-block px-5 py-2 bg-emerald-600 rounded-full text-sm hover:scale-105 transition">
+FB প্রোফাইল
+</a>
+</div>
+  
+<div class="member-card">
+<img src="https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/sizan.jpg"
+class="w-28 h-28 mx-auto rounded-full object-cover mb-4 border-4 border-emerald-500">
+<h3 class="text-lg font-bold text-yellow-200"> সামিউল ইসলাম সিজান  </h3>
+  <p class="text-base text-white-300 font-semibold"> সদস্য </p>
+<p class="text-sm">ফোন: 01744-470056</p>
+<p class="text-sm mb-3 text-red-500 font-semibold">Blood group: B+</p>
+<a href="https://www.facebook.com/profile.php?id=61586852207738" class="inline-block px-5 py-2 bg-emerald-600 rounded-full text-sm hover:scale-105 transition">
+FB প্রোফাইল
+</a>
+</div>
+
+   <div class="member-card">
+<img src="https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/firoz.jpg"
+class="w-28 h-28 mx-auto rounded-full object-cover mb-4 border-4 border-emerald-500">
+<h3 class="text-lg font-bold text-yellow-200"> মো: ফিরোজ হাসান   </h3>
+  <p class="text-base text-white-300 font-semibold"> সদস্য </p>
+<p class="text-sm">ফোন: 01773-078247 </p>
+<p class="text-sm mb-3 text-red-500 font-semibold">Blood group: B+</p>
+<a href="https://www.facebook.com/md.firoz.hasan.791387" class="inline-block px-5 py-2 bg-emerald-600 rounded-full text-sm hover:scale-105 transition">
+FB প্রোফাইল
+</a>
+</div>
+
+  <div class="member-card">
+<img src="https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/sina.jpg"
+class="w-28 h-28 mx-auto rounded-full object-cover mb-4 border-4 border-emerald-500">
+<h3 class="text-lg font-bold text-yellow-200"> শেফাউল ইসলাম সিনা  </h3>
+  <p class="text-base text-white-300 font-semibold"> সদস্য </p>
+<p class="text-sm">ফোন: 01749-027083 </p>
+<p class="text-sm mb-3 text-red-500 font-semibold">Blood group: O+</p>
+<a href="https://www.facebook.com/shefaulislam.sina" class="inline-block px-5 py-2 bg-emerald-600 rounded-full text-sm hover:scale-105 transition">
+FB প্রোফাইল
+</a>
+</div>
+
+  
+  
+    <div class="member-card">
+<img src="https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/baytul.jpg"
+class="w-28 h-28 mx-auto rounded-full object-cover mb-4 border-4 border-emerald-500">
+<h3 class="text-lg font-bold text-yellow-200"> বাইতুল মামুন  </h3>
+  <p class="text-base text-white-300 font-semibold"> সদস্য </p>
+<p class="text-sm">ফোন: 01891-789038 </p>
+<p class="text-sm mb-3 text-red-500 font-semibold">Blood group: O+</p>
+<a href="https://www.facebook.com/baitul.415624" class="inline-block px-5 py-2 bg-emerald-600 rounded-full text-sm hover:scale-105 transition">
+FB প্রোফাইল
+</a>
+</div>
+
+  
+  
+  <div class="member-card">
+<img src="https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/mirajul.jpg"
+class="w-28 h-28 mx-auto rounded-full object-cover mb-4 border-4 border-emerald-500">
+<h3 class="text-lg font-bold text-yellow-200"> মোঃ মিরাজুল ইসলাম   </h3>
+  <p class="text-base text-white-300 font-semibold"> সদস্য </p>
+<p class="text-sm">ফোন: 01821-443826</p>
+<p class="text-sm mb-3 text-red-500 font-semibold">Blood group: O+</p>
+<a href="https://www.facebook.com/merajul.islam.623608" class="inline-block px-5 py-2 bg-emerald-600 rounded-full text-sm hover:scale-105 transition">
+FB প্রোফাইল
+</a>
+</div>
+  
+  <div class="member-card">
+<img src="https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/user.png"
+class="w-28 h-28 mx-auto rounded-full object-cover mb-4 border-4 border-emerald-500">
+<h3 class="text-lg font-bold text-yellow-200"> মোঃ শামীম আহমেদ   </h3>
+  <p class="text-base text-white-300 font-semibold"> সদস্য </p>
+<p class="text-sm">ফোন: 01750-512870</p>
+<p class="text-sm mb-3 text-red-500 font-semibold">Blood group: B+</p>
+<a href="https://www.facebook.com/md.shamim.2870" class="inline-block px-5 py-2 bg-emerald-600 rounded-full text-sm hover:scale-105 transition">
+FB প্রোফাইল
+</a>
+</div>
+
+  <div class="member-card">
+<img src="https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/shemul.jpg"
+class="w-28 h-28 mx-auto rounded-full object-cover mb-4 border-4 border-emerald-500">
+<h3 class="text-lg font-bold text-yellow-200"> মোঃ  সানজিদ হাসান শিমুল বাসার   </h3>
+  <p class="text-base text-white-300 font-semibold"> সদস্য </p>
+<p class="text-sm">ফোন: 01777-659544</p>
+<p class="text-sm mb-3 text-red-500 font-semibold">Blood group: B+</p>
+<a href="https://www.facebook.com/sanjid.sk.948" class="inline-block px-5 py-2 bg-emerald-600 rounded-full text-sm hover:scale-105 transition">
+FB প্রোফাইল
+</a>
+</div>
+  
+  <div class="member-card">
+<img src="https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/mahamudul.jpg"
+class="w-28 h-28 mx-auto rounded-full object-cover mb-4 border-4 border-emerald-500">
+<h3 class="text-lg font-bold text-yellow-200"> মাহামুদুল হাসান   </h3>
+  <p class="text-base text-white-300 font-semibold"> সদস্য </p>
+<p class="text-sm">ফোন: 0177-7358579</p>
+<p class="text-sm mb-3 text-red-500 font-semibold">Blood group: B+</p>
+<a href="https://www.facebook.com/mahamudul.hasan.50864" class="inline-block px-5 py-2 bg-emerald-600 rounded-full text-sm hover:scale-105 transition">
+FB প্রোফাইল
+</a>
+</div>
+
+   <div class="member-card">
+<img src="https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/nurmohammad.jpg"
+class="w-28 h-28 mx-auto rounded-full object-cover mb-4 border-4 border-emerald-500">
+<h3 class="text-lg font-bold text-yellow-200"> নূর মোহাম্মদ ইসলাম    </h3>
+  <p class="text-base text-white-300 font-semibold"> সদস্য </p>
+<p class="text-sm">ফোন: 01722-574776</p>
+<p class="text-sm mb-3 text-red-500 font-semibold">Blood group: B+</p>
+<a href="https://www.facebook.com/nurmohammad2276" class="inline-block px-5 py-2 bg-emerald-600 rounded-full text-sm hover:scale-105 transition">
+FB প্রোফাইল
+</a>
+</div>
+
+ <div class="member-card">
+<img src="https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/rasel.jpg"
+class="w-28 h-28 mx-auto rounded-full object-cover mb-4 border-4 border-emerald-500">
+<h3 class="text-lg font-bold text-yellow-200"> মোঃ রাসেল  </h3>
+  <p class="text-base text-white-300 font-semibold"> সদস্য </p>
+<p class="text-sm">ফোন: 01993-701445</p>
+<p class="text-sm mb-3 text-red-500 font-semibold">Blood group: O+</p>
+<a href="https://www.facebook.com/profile.php?id=61580510439969" class="inline-block px-5 py-2 bg-emerald-600 rounded-full text-sm hover:scale-105 transition">
+FB প্রোফাইল
+</a>
+</div>
+
+   <div class="member-card">
+<img src="https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/shahariya.jpg"
+class="w-28 h-28 mx-auto rounded-full object-cover mb-4 border-4 border-emerald-500">
+<h3 class="text-lg font-bold text-yellow-200"> মোঃ শাহরিয়ার ইসলাম  </h3>
+  <p class="text-base text-white-300 font-semibold"> সদস্য </p>
+<p class="text-sm">ফোন: 01614-577112 </p>
+<p class="text-sm mb-3 text-red-500 font-semibold">Blood group: B+</p>
+<a href="https://www.facebook.com/md.shariya.islam.998647" class="inline-block px-5 py-2 bg-emerald-600 rounded-full text-sm hover:scale-105 transition">
+FB প্রোফাইল
+</a>
+</div>
+
+  
+  
+  
+</div>
+</section>
+  
+<!-- FOOTER -->
+<footer class="footer mt-20">
+<div class="py-16">
+<div class="max-w-7xl mx-auto px-6">
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
+
+<div>
+<h3 class="text-emerald-400 text-lg font-semibold mb-4">আল-হেরা এসোসিয়েশন</h3>
+<p class="text-sm text-white-400 align-center">
+বদলে যাই, বদলে দেই
+</p>
+</div>
+
+<div>
+<h3 class="text-emerald-400 text-lg font-semibold mb-4">গুরুত্বপূর্ণ লিংক</h3>
+<div class="flex flex-col space-y-2 text-sm">
+<a href="index.html">Home</a>
+<a href="members.html">সদস্যবৃন্দ</a>
+<a href="donation.html">দান</a>
+<a href="contact.html">যোগাযোগ</a>
+</div>
+</div>
+
+<div class="md:text-right">
+<h3 class="text-emerald-400 text-lg font-semibold mb-4">যোগাযোগ</h3>
+<p class="text-sm text-white-400">ছড়ান,মিঠাপুকুর,রংপুর</p>
+<p class="text-sm text-white-400 mb-4">মোবাইল: 01887536627</p>
+
+<div class="flex justify-center md:justify-end gap-4">
+<a href="https://www.facebook.com/alheraassociationbd" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+<a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+<a href="#" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+</div>
+</div>
+
+</div>
+
+<div class="mt-12 pt-6 border-t border-white/10 text-center text-white-500 text-sm">
+© 2026 Al-Hera Association | 
+<a href="https://www.facebook.com/jobaydurrahmansujon/"><span class="text-yellow-300 font-medium">Developed by Ms Sujon Sarkar</span></a>
+</div>
+
+</div>
+</div>
+</footer>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+const overlay = document.getElementById("overlay");
+
+// MENU
+menuBtn.addEventListener("click", () => {
+  mobileMenu.classList.toggle("show");
+  overlay.classList.toggle("show");
+});
+
+// CLOSE MENU
+function closeMenu(){
+  mobileMenu.classList.remove("show");
+  overlay.classList.remove("show");
+}
+
+overlay.addEventListener("click", closeMenu);
+
+// SUBMENU FIX
+function toggleSubMenu(){
+  document.getElementById("subMenu").classList.toggle("hidden");
+}
+
+// AUTO CLOSE + SMOOTH SCROLL
+document.querySelectorAll('#mobileMenu a').forEach(link=>{
+  link.addEventListener('click', ()=>{
+    closeMenu();
+  });
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
