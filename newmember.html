@@ -78,12 +78,11 @@
         /* Mobile Menu */
         #mobileMenu { position: fixed; top: 0; right: -280px; width: 260px; height: 100%; background: #020617; padding: 40px 25px; transition: .4s ease; z-index: 100; border-left: 1px solid #10b981; }
         #mobileMenu.show { right: 0; }
+        .nav-link { position: relative; padding-bottom: 4px; }
         .nav-link:hover::after, .nav-link.active::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 2px; background: #10b981; }
     </style>
 </head>
 <body>
-
-<div id="overlay"></div>
 
     <header class="bg-[#020617]/80 sticky top-0 z-40 backdrop-blur-lg border-b border-emerald-900/30">
     <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
@@ -108,7 +107,7 @@
 
 <section class="py-16 px-6 text-center">
     <h2 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">আমাদের পরিবার</h2>
-    <p class="text-emerald-400/80 mb-8 max-w-lg mx-auto">একসাথে চলি, সুন্দর সমাজ গড়ি</p>
+    <p class="text-emerald-400/80 mb-8 max-w-lg mx-auto">একসাথে চলি, সুন্দর সমাজ গড়ি</p>
     <div class="flex justify-center gap-4">
         <button class="hero-btn active" id="btn-all" onclick="showSection('all')">সকল সদস্য</button>
         <button class="hero-btn" id="btn-advisors" onclick="showSection('advisors')">উপদেষ্টা বৃন্দ</button>
@@ -148,20 +147,49 @@
 
 <script>
     const advisors = [
-        {name:"মাওলানা ইমরুল হাসান সিদ্দিকী", role:"বিশিষ্ট মিডিয়া ব্যক্তিত্ব", address:"ঢাকা, বাংলাদেশ", phone:"01409-524619", blood:"O+", image:"https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/imrul.jpg", fb:"#"},
-        {name:"মোঃ আরিফুল ইসলাম আরিফ", role:"বিশিষ্ট চাকুরিজীবি", address:"মিঠাপুকুর, রংপুর", phone:"01721-851267", blood:"O+", image:"", fb:"#"}
+        {name:"মাওলানা ইমরুল হাসান সিদ্দিকী", role:"বিশিষ্ট মিডিয়া ব্যক্তিত্ব", address:"ঢাকা, বাংলাদেশ", phone:"01409-524619", blood:"O+", image:"https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/imrul.jpg", fb:"https://www.facebook.com/mawlana.imrul.hasan"},
+        {name:"মোঃ আরিফুল ইসলাম আরিফ", role:"বিশিষ্ট চাকুরিজীবি", address:"মিঠাপুকুর, রংপুর", phone:"01721-851267", blood:"O+", image:"https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/arif.jpg", fb:"https://www.facebook.com/ariful.islam.743109"}
     ];
 
     const members = [
-        {name:"মোঃ মাসুদ রানা", role:"সভাপতি", address:"মিঠাপুকুর, রংপুর", phone:"01887-536627", blood:"B-", image:"", fb:"#"},
-        {name:"মোঃ আদনানুল হাসান", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01708-356911", blood:"AB+", image:"", fb:"#"},
-        {name:"মোঃ আরমান ইসলাম", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01305-935061", blood:"O+", image:"", fb:"#"}
+          {name:"মোঃ মাসুদ রানা", role:"সভাপতি", address:"মিঠাপুকুর, রংপুর", phone:"01887-536627", blood:"B-", image:"https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/masud.jpg", fb:"https://www.facebook.com/mithul2082001"},
+           {name:"মোঃ আদনানুল হাসান", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01708-356911", blood:"AB+", image:"https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/adnanul1.jpg", fb:"https://www.facebook.com/md.adnanul.hasan"},
+           {name:"মোঃ রুমান মাহমুদ", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01836-077058", blood:"O+", image:"https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/ruman1.jpg", fb:"https://www.facebook.com/Md.ruman.mahmud462"}
+           {name:"মো: রাব্বুল ইসলাম (রাজিব)", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:" 01301-192679", blood:"B+", image:"https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/rabbul.jpg", fb:"https://www.facebook.com/md.rabbul.islam.rajib"}
+            {name:"মো: ফিরোজ হাসান", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:" 01773-078247", blood:"B+", image:"https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/firoz.jpg", fb:"https://www.facebook.com/md.firoz.hasan.791387"}
+            {name:"সামিউল ইসলাম সিজান", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01744-470056", blood:"B+", image:"https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/sizan.jpg", fb:"https://www.facebook.com/profile.php?id=61586852207738"}
+            {name:"শেফাউল ইসলাম সিনা", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01749-027083", blood:"O+", image:"https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/sina.jpg", fb:"https://www.facebook.com/shefaulislam.sina"}
+            {name:"বাইতুল মামুন", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01891-789038", blood:"O+", image:"https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/baytul.jpg", fb:"https://www.facebook.com/baitul.415624"}
+            {name:" মোঃ কারিমুল ইসলাম", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:" 01819-492352", blood:"O+", image:"https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/karimul.jpg", fb:"https://www.facebook.com/k.a.r.i.m.u.ltsu"}
+            {name:" মোঃ মিরাজুল ইসলাম", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01821-443826", blood:"O+", image:"https://raw.githubusercontent.com/mssujonsarkar11-wq/pictures/main/mirajul.jpg", fb:"https://www.facebook.com/merajul.islam.623608"}
+            {name:"মোঃ আরমান ইসলাম", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01305-935061", blood:"O+", image:"", fb:"#"}
+            {name:"মোঃ আরমান ইসলাম", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01305-935061", blood:"O+", image:"", fb:"#"}
+            {name:"মোঃ আরমান ইসলাম", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01305-935061", blood:"O+", image:"", fb:"#"}
+            {name:"মোঃ আরমান ইসলাম", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01305-935061", blood:"O+", image:"", fb:"#"}
+            {name:"মোঃ আরমান ইসলাম", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01305-935061", blood:"O+", image:"", fb:"#"}
+            {name:"মোঃ আরমান ইসলাম", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01305-935061", blood:"O+", image:"", fb:"#"}
+            {name:"মোঃ আরমান ইসলাম", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01305-935061", blood:"O+", image:"", fb:"#"}
+            {name:"মোঃ আরমান ইসলাম", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01305-935061", blood:"O+", image:"", fb:"#"}
+            {name:"মোঃ আরমান ইসলাম", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01305-935061", blood:"O+", image:"", fb:"#"}
+            {name:"মোঃ আরমান ইসলাম", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01305-935061", blood:"O+", image:"", fb:"#"}
+            {name:"মোঃ আরমান ইসলাম", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01305-935061", blood:"O+", image:"", fb:"#"}
+            {name:"মোঃ আরমান ইসলাম", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01305-935061", blood:"O+", image:"", fb:"#"}
+            {name:"মোঃ আরমান ইসলাম", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01305-935061", blood:"O+", image:"", fb:"#"}
+            {name:"মোঃ আরমান ইসলাম", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01305-935061", blood:"O+", image:"", fb:"#"}
+            {name:"মোঃ আরমান ইসলাম", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01305-935061", blood:"O+", image:"", fb:"#"}
+            {name:"মোঃ আরমান ইসলাম", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01305-935061", blood:"O+", image:"", fb:"#"}
+            {name:"মোঃ আরমান ইসলাম", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01305-935061", blood:"O+", image:"", fb:"#"}
+            {name:"মোঃ আরমান ইসলাম", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01305-935061", blood:"O+", image:"", fb:"#"}
+            {name:"মোঃ আরমান ইসলাম", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01305-935061", blood:"O+", image:"", fb:"#"}
+            {name:"মোঃ আরমান ইসলাম", role:"সদস্য", address:"মিঠাপুকুর, রংপুর", phone:"01305-935061", blood:"O+", image:"", fb:"#"}
+    
     ];
 
     function createCard(m) {
+        // ইমেজ থাকলে সেটি দেখাবে, না থাকলে নামের প্রথম অক্ষর দেখাবে
         const profileDisplay = m.image 
-            ? <img src="${m.image}" alt="${m.name}"> 
-            : <span>${m.name.charAt(0)}</span>;
+            ? `<img src="${m.image}" alt="${m.name}">` 
+            : `<span>${m.name.charAt(0)}</span>`;
 
         return `
         <div class="member-card">
@@ -186,6 +214,7 @@
         </div>`;
     }
 
+    // গ্রিড লোড করা
     document.getElementById('advisors-grid').innerHTML = advisors.map(createCard).join('');
     document.getElementById('members-grid').innerHTML = members.map(createCard).join('');
 
@@ -194,20 +223,24 @@
         const memSec = document.getElementById('section-members');
         const btnAll = document.getElementById('btn-all');
         const btnAdv = document.getElementById('btn-advisors');
+        
         if(type === 'advisors') {
-            advSec.style.display = 'block'; memSec.style.display = 'none';
-            btnAdv.classList.add('active'); btnAll.classList.remove('active');
+            advSec.style.display = 'block'; 
+            memSec.style.display = 'none';
+            btnAdv.classList.add('active'); 
+            btnAll.classList.remove('active');
         } else {
-            advSec.style.display = 'block'; memSec.style.display = 'block';
-            btnAll.classList.add('active'); btnAdv.classList.remove('active');
+            advSec.style.display = 'block'; 
+            memSec.style.display = 'block';
+            btnAll.classList.add('active'); 
+            btnAdv.classList.remove('active');
         }
     }
 
     // Mobile Menu Logic
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
-    const toggleMenu = () => { mobileMenu.classList.toggle('show'); };
-    menuBtn.onclick = toggleMenu;
+    menuBtn.onclick = () => { mobileMenu.classList.toggle('show'); };
 </script>
 
 </body>
